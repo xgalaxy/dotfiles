@@ -1,0 +1,27 @@
+[user]
+        name = AUTHORNAME
+        email = AUTHOREMAIL
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
+[core]
+        excludesfile = ~/.gitignore
+        editor = mvim -f --nomru -c \"au VimLeave * !open -a iTerm\"
+[push]
+        default = tracking
+[branch]
+        autosetuprebase = always
+[merge]
+        ff = false
+        keepBackup = false
+        tool = mvimdiff
+[mergetool "mvimdiff"]
+        cmd = mvim -d -f $LOCAL $MERGED $REMOTE
+[diff]
+        tool = mvimdiff
+[difftool]
+        prompt = false
+[difftool "mvimdiff"]
+        cmd = mvim -d -f $LOCAL $MERGED $REMOTE

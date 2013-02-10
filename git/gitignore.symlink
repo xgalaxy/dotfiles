@@ -1,0 +1,51 @@
+# Compiled source #
+###################
+*bin
+*gen
+*.apk
+*.ap_
+*.com
+*.class
+*.classpath
+*.dex
+*.dll
+*.exe
+*.o
+*.pyc
+*R.java
+*.so
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# IDE generated files #
+#######################
+*xcuserdata*
+*.project
+*.pbxuser
+*.mode1v3
+
+# Logs and databases #
+######################
+*.0
+*.log
+*.lock
+*.sql
+*.sqlite
+*.cache
+doc/tags
+
+# OS generated files #
+######################
+*.pid
+.DS_Store
+ehthumbs.db
+Thumbs.db
