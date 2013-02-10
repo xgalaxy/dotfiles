@@ -55,7 +55,6 @@ private
 def git_main
 
   `git fetch origin`
-  `git reset --hard origin/master`
   `git merge origin/master`
 
 end
@@ -63,8 +62,7 @@ end
 def git_modules
 
   `git submodule update --init --recursive`
-  `git submodule foreach 'git fetch origin; git reset --hard origin/master; git submodule update --recursive; git clean -dfx'`
-  `git clean -dfx`
+  `git submodule foreach 'git fetch origin; git submodule update --recursive'`
 
 end
 
