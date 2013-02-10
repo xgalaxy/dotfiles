@@ -1,6 +1,6 @@
 [user]
-        name = AUTHORNAME
-        email = AUTHOREMAIL
+        name = AUTHOR_NAME
+        email = AUTHOR_EMAIL
 [color]
         diff = auto
         status = auto

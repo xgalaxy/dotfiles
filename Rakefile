@@ -72,13 +72,13 @@ def git_setup_author
 
   puts
   puts "What is your git author name?"
-  authorname = STDIN.gets
+  author_name = STDIN.gets.chomp
   
   puts
   puts "What is your git author email?"
-  authoremail = STDIN.gets
+  author_email = STDIN.gets.chomp
 
-  `sed -e "s/AUTHORNAME/#{authorname}/g" -e "s/AUTHOREMAIL/#{authoremail}/g" git/gitconfig.symlink.example > git/gitconfig.symlink`
+  `sed -e "s/AUTHOR_NAME/#{author_name}/g" -e "s/AUTHOR_EMAIL/#{author_email}/g" git/gitconfig.symlink.example > git/gitconfig.symlink`
 
   puts
   
@@ -141,7 +141,7 @@ def install_folders
     source = folder[0]
     target = "#{ENV['HOME']}/#{folder[-1].chomp('.fork')}"
     if File.exists?(target) or File.symlink?(target)
-      puts "skipping #{target}"
+      puts "Skipping #{target}"
     else
       `ln -s "$PWD/#{source}" "#{target}"`
     end
@@ -157,7 +157,7 @@ def install_fonts
   fonts = Dir.glob('fonts/*')
   fonts.each do |font|
     file = font.split('/').last
-    target = "#{fontdir}/Library/Fonts/#{file}"
+    target = "#{fontdir}/#{file}"
 
     `cp -f "#{font}" "#{target}"`
   end
