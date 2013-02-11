@@ -19,7 +19,6 @@ end
 desc "Updates our existing dotfiles."
 task :update do
 
-  git_main
   git_modules
 
   install_linkables
@@ -52,17 +51,10 @@ task :default => 'install'
 
 private
 
-def git_main
-
-  `git fetch origin`
-  `git merge origin/master`
-
-end
-
 def git_modules
 
+  `git pull --recurse-submodules`
   `git submodule update --init --recursive`
-  `git submodule foreach 'git fetch origin; git submodule update --recursive'`
 
 end
 
@@ -89,7 +81,8 @@ def install_homebrew
     `ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"`
   end
 
-  `brew install ack ctags hub`
+  `brew install ack ctags hub reattach-to-user-namespace tmux`
+  `brew install macvim --override-system-vim`
 
 end
 
@@ -132,6 +125,7 @@ def install_folders
 
   folders = [
     ['bin'],
+    ['vim', '.vim'],
     ['zsh/prezto.fork', '.zprezto'],
   ]
 

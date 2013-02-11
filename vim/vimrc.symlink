@@ -1,0 +1,18 @@
+""
+"" xgalaxy vim setup
+""
+
+" Prefer vim over vi compatibility
+set nocompatible
+
+" Vundle support
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+" Load bundles
+source ~/.vim/vim.bundles
+
+" General
+filetype plugin indent on
+syntax on
