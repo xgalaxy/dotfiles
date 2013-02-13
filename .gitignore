@@ -1,4 +1,5 @@
 git/gitconfig.symlink
+vim/bundle/*
 vim/_undo/*
 vim/_swap/*
 vim/_backup/*
