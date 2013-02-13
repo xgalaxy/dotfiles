@@ -139,9 +139,9 @@ def install_folders
     end
   end
 
-  FileUtils.mkdir_p("#{ENV['HOME']}/.vim/.undo")
-  FileUtils.mkdir_p("#{ENV['HOME']}/.vim/.swap")
-  FileUtils.mkdir_p("#{ENV['HOME']}/.vim/.backup")
+  FileUtils.mkdir_p("#{ENV['HOME']}/.vim/_undo")
+  FileUtils.mkdir_p("#{ENV['HOME']}/.vim/_swap")
+  FileUtils.mkdir_p("#{ENV['HOME']}/.vim/_backup")
 
 end
 

@@ -2,6 +2,7 @@
 "" vim setup
 ""
 
+
 " Prefer vim over vi compatibility
 set nocompatible
 
@@ -16,9 +17,9 @@ set history=1000				" Store a ton of history (default is 20)
 set undofile					" Persistent undo
 set undolevels=1000				" Number of changes that are saved
 set undoreload=10000				" Number of lines to save for undo on buffer reload
-set undodir=~/.vim/.undo
-set directory=~/.vim/swap
-set backupdir=~/.vim/.backup
+set undodir^=~/.vim/_undo//
+set directory^=~/.vim/_swap//
+set backupdir^=~/.vim/_backup//
 
 
 " Interface
