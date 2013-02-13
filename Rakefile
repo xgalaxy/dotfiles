@@ -139,6 +139,10 @@ def install_folders
     end
   end
 
+  FileUtils.mkdir_p("#{ENV['HOME']}/.vim/.undo")
+  FileUtils.mkdir_p("#{ENV['HOME']}/.vim/.swap")
+  FileUtils.mkdir_p("#{ENV['HOME']}/.vim/.backup")
+
 end
 
 def install_fonts

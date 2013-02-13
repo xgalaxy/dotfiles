@@ -1,18 +1,75 @@
 ""
-"" xgalaxy vim setup
+"" vim setup
 ""
 
 " Prefer vim over vi compatibility
 set nocompatible
 
-" Vundle support
-filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
 
-" Load bundles
-source ~/.vim/vim.bundles
+" Load vundles
+source ~/.vim/vundles.vim
+
 
 " General
-filetype plugin indent on
-syntax on
+set hidden					" Allow buffer switching without saving
+set history=1000				" Store a ton of history (default is 20)
+set undofile					" Persistent undo
+set undolevels=1000				" Number of changes that are saved
+set undoreload=10000				" Number of lines to save for undo on buffer reload
+set undodir=~/.vim/.undo
+set directory=~/.vim/swap
+set backupdir=~/.vim/.backup
+
+
+" Interface
+set encoding=utf-8				" Default UTF-8 encoding
+set t_Co=256					" Enable 256 colors
+syntax enable 
+
+set tabpagemax=5				" Only show up to 5 tabs
+set showmode					" Show the current editor mode
+set cursorline					" Show current line
+set number					" Show line numbers
+set nowrap					" Don't wrap long lines
+
+set ruler					" Show the ruler
+set showcmd					" Show partial commands in status line
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+
+set laststatus=2
+set statusline=%<%f\				" Filename
+set statusline+=%w%h%m%r			" Options
+set statusline+=%{fugitive#statusline()}	" Git Hotness
+set statusline+=\ [%{&ff}/%Y]			" Filetype
+set statusline+=\ [%{getcwd()}]			" Current dir
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%		" Right aligned file nav info
+
+set showmatch					" Show matching brackets / parenthesis
+set incsearch					" Find as you type search
+set hlsearch					" Highlight search
+set ignorecase					" Case insensitive search
+set smartcase					" Case sensitive when specified
+
+set complete-=i					" Keyword completion: don't scan current & included files
+
+set list					" Show problematic whitespace
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+	let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
+endif
+
+set wildmenu					" Show list instead of just completing
+set wildmode=list:longest,full			" Command <Tab> completion, list matches, then longest common part, then all
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+set wildignore+=*.swp,*~,._*
+
+
+" Formatting
+set autoindent					" Indent at the same level of previous line
+set expandtab					" Tabs are spaces, not tabs
+set shiftwidth=4				" Use indents of 4 spaces
+set softtabstop=4				" Let backspace delete indent
+
+set backspace=indent,eol,start			" Backspace for dummies
