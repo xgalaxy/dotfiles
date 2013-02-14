@@ -14,24 +14,25 @@ source ~/.vim/vundles.vim
 " General
 set hidden					" Allow buffer switching without saving
 set history=1000				" Store a ton of history (default is 20)
-set undofile					" Persistent undo
 set undolevels=1000				" Number of changes that are saved
-set undoreload=10000				" Number of lines to save for undo on buffer reload
-set undodir^=~/.vim/_undo//
-set directory^=~/.vim/_swap//
-set backupdir^=~/.vim/_backup//
+set nobackup                                    " I don't need backups
+set noswapfile                                  " I don't need swap files
 
 
 " Interface
-set encoding=utf-8				" Default UTF-8 encoding
+set ttyfast                                     " We have a fast terminal
 set t_Co=256					" Enable 256 colors
-syntax enable 
+set encoding=utf-8				" Default UTF-8 encoding
+set ttymouse=xterm2                             " Enable terminal mouse
+set mouse=a                                     " Enable mouse in all modes
 
-set tabpagemax=5				" Only show up to 5 tabs
+set title                                       " Show the title in the terminal
+set tabpagemax=10				" Only show up to 5 tabs
 set showmode					" Show the current editor mode
 set cursorline					" Show current line
 set number					" Show line numbers
 set nowrap					" Don't wrap long lines
+syntax enable 
 
 set ruler					" Show the ruler
 set showcmd					" Show partial commands in status line
@@ -43,10 +44,9 @@ set incsearch					" Find as you type search
 set hlsearch					" Highlight search
 set ignorecase					" Case insensitive search
 set smartcase					" Case sensitive when specified
-
 set complete-=i					" Keyword completion: don't scan current & included files
 
-set list					" Show problematic whitespace
+set nolist					" Default to not showing whitespace, will toggle later 
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
 	let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"

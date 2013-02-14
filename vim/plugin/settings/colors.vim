@@ -1,7 +1,9 @@
 ""
-"" vim solarized settings
+"" vim color scheme settings
 ""
 
+
+set background=dark
 
 color solarized					" Load color scheme
 let g:solarized_termcolors=256			" Set supported colors
