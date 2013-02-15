@@ -12,3 +12,6 @@ set -g bell-action any
 
 # Bigger history
 set -g history-limit 10000
+
+# Fix escape time so it isn't slowing vim down
+set -s escape-time 0
