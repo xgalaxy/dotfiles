@@ -25,8 +25,11 @@ set tags+=./tags;/                              " Lookup tags in cwd first, then
 set ttyfast                                     " We have a fast terminal
 set t_Co=256                                    " Enable 256 colors
 set encoding=utf-8                              " Default UTF-8 encoding
+set clipboard=unnamed                           " Work with the system clipboard
 set ttymouse=xterm2                             " Enable terminal mouse
 set mouse=a                                     " Enable mouse in all modes
+
+let mapleader=','                               " The one true keybind 
 
 set ttimeoutlen=10                              " Enable fast Escape in terminal
 augroup FastEscape
@@ -44,7 +47,6 @@ set nowrap                                      " Don't wrap long lines
 set scrolloff=3                                 " Minimum lines to keep below current line
 set splitbelow                                  " Split horiontally below
 set splitright                                  " Split vertically right
-syntax enable 
 
 set ruler                                       " Show the ruler
 set showcmd                                     " Show partial commands in status line
@@ -79,4 +81,7 @@ set expandtab                                   " Tabs are spaces, not tabs
 set shiftwidth=4                                " Use indents of 4 spaces
 set softtabstop=4                               " Let backspace delete indent
 
+
+" Define key mappings 
+source ~/.vim/mappings.vim
 set backspace=indent,eol,start                  " Backspace for dummies

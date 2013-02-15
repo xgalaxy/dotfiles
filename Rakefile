@@ -161,20 +161,28 @@ end
 
 def install_vim_plugins
  
+    puts
+    puts "Please wait.. it may appear to hang for a minute or two."
+    puts
+
     # Have Vundle install managed plugins
-    `vim +BundleInstall +qall`
+    `vim +BundleInstall +qall > /dev/null 2>&1`
 
     # Update YouCompleteMe plugin
-    `$PWD/vim/bundle/YouCompleteMe/install.sh --clang-completer`
+    `cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer`
 
 end
 
 def update_vim_plugins
 
+    puts
+    puts "Please wait.. it may appear to hang for a minute or two."
+    puts
+
     # Have Vundle update managed plugins
-    `vim +BundleUpdate +qall`
+    `vim +BundleUpdate +qall > /dev/null 2>&1`
 
     # Update YouCompleteMe plugin
-    `$PWD/vim/bundle/YouCompleteMe/install.sh --clang-completer`
+    #`cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer`
 
 end

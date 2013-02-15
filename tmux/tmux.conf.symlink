@@ -1,17 +1,22 @@
 # ZSH is nice
 set-option -g default-shell $SHELL
 
-# Access OSX pasteboard
-set-option -g default-command "reattach-to-user-namespace -l $SHELL"
-
 # Default termtype. If the rcfile sets $TERM, that overrides this value.
 set -g default-terminal screen-256color
+
+# Fix escape time so it isn't slowing vim down
+set -s escape-time 0
+
+# Enable mouse support
+set-option -g mouse-select-pane on
+set-option -g mouse-select-window on
+set-window-option -g mode-mouse on
+
+# Access OSX pasteboard
+set-option -g default-command "reattach-to-user-namespace -l $SHELL"
 
 # Ring the bell if any background window rang a bell
 set -g bell-action any
 
 # Bigger history
 set -g history-limit 10000
-
-# Fix escape time so it isn't slowing vim down
-set -s escape-time 0
