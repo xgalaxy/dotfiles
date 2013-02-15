@@ -11,6 +11,7 @@ task :install do
     install_linkables
     install_folders
     install_fonts
+    install_vim_plugins
 
     `chsh -s /bin/zsh`
 
@@ -24,6 +25,7 @@ task :update do
     install_linkables
     install_folders
     install_fonts
+    update_vim_plugins
 
 end
 
@@ -154,5 +156,25 @@ def install_fonts
 
         `cp -f "#{font}" "#{target}"`
     end
+
+end
+
+def install_vim_plugins
+ 
+    # Have Vundle install managed plugins
+    `vim +BundleInstall +qall`
+
+    # Update YouCompleteMe plugin
+    `$PWD/vim/bundle/YouCompleteMe/install.sh --clang-completer`
+
+end
+
+def update_vim_plugins
+
+    # Have Vundle update managed plugins
+    `vim +BundleUpdate +qall`
+
+    # Update YouCompleteMe plugin
+    `$PWD/vim/bundle/YouCompleteMe/install.sh --clang-completer`
 
 end
