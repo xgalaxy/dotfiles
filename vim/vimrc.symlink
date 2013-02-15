@@ -25,11 +25,11 @@ set tags+=./tags;/                              " Lookup tags in cwd first, then
 set ttyfast                                     " We have a fast terminal
 set t_Co=256                                    " Enable 256 colors
 set encoding=utf-8                              " Default UTF-8 encoding
+set guifont=Source\ Code\ Pro:h14               " In case we are running gui
 set clipboard=unnamed                           " Work with the system clipboard
 set ttymouse=xterm2                             " Enable terminal mouse
 set mouse=a                                     " Enable mouse in all modes
 
-let mapleader=','                               " The one true keybind 
 
 set ttimeoutlen=10                              " Enable fast Escape in terminal
 augroup FastEscape

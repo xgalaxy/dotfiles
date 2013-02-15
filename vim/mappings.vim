@@ -2,6 +2,8 @@
 "" vim keymap settings
 ""
 
+" The one true keybind
+let mapleader=','
 
 " Work better with wrapped lines
 nnoremap j gj
