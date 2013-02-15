@@ -83,7 +83,7 @@ def install_homebrew
         `ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"`
     end
 
-    `brew install ack ctags hub reattach-to-user-namespace tmux`
+    `brew install ack cmake ctags hub reattach-to-user-namespace tmux`
     `brew install macvim --override-system-vim`
 
 end

@@ -18,6 +18,8 @@ set undolevels=1000                             " Number of changes that are sav
 set nobackup                                    " I don't need backups
 set noswapfile                                  " I don't need swap files
 
+set tags+=./tags;/                              " Lookup tags in cwd first, then up
+
 
 " Interface
 set ttyfast                                     " We have a fast terminal
@@ -64,9 +66,10 @@ endif
 
 set wildmenu                                    " Show list instead of just completing
 set wildmode=list:longest,full                  " Command <Tab> completion, list matches, then longest common part, then all
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*.o,*.out,*.obj,*.exe,*.so,*.dll,.git,*.rbc,*.rbo,*.class,*.svn,*.gem
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set wildignore+=*.swp,*~,._*
 
 

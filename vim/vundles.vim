@@ -22,7 +22,6 @@ Bundle 'sjl/vitality.vim'
 
 " Navigation
 Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'Lokaltog/vim-easymotion'
 
