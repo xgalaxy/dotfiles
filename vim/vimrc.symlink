@@ -44,14 +44,18 @@ set noshowmode                                  " Don't show the current editor 
 set cursorline                                  " Show current line
 set number                                      " Show line numbers
 set nowrap                                      " Don't wrap long lines
+set linebreak                                   " Wrap at word (if word wrapping)
 set scrolloff=3                                 " Minimum lines to keep below current line
-set splitbelow                                  " Split horiontally below
-set splitright                                  " Split vertically right
 
 set ruler                                       " Show the ruler
 set showcmd                                     " Show partial commands in status line
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set laststatus=2
+
+augroup LongLineWarning                         " Highlight cursor line after 120 characters
+    autocmd!
+    au BufEnter * match ErrorMsg '\%120v.*'
+augroup END
 
 set showmatch                                   " Show matching brackets / parenthesis
 set incsearch                                   " Find as you type search
@@ -73,6 +77,10 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set wildignore+=*.swp,*~,._*
+
+set equalalways                                 " multiple windows are equal in size
+set splitbelow                                  " Split horiontally below
+set splitright                                  " Split vertically right
 
 
 " Formatting

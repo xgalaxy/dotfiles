@@ -31,12 +31,10 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 
 " Programming
-Bundle 'tpope/vim-fugitive'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 "Bundle 'xolox/vim-easytags'
 Bundle 'majutsushi/tagbar'
-Bundle 'mattn/gist-vim'
 
 " Snippits
 Bundle 'SirVer/ultisnips'
