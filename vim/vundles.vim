@@ -19,6 +19,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'sjl/vitality.vim'
+Bundle 'mileszs/ack.vim'
 
 " Navigation
 Bundle 'kien/ctrlp.vim'
