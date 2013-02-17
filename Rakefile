@@ -7,7 +7,7 @@ task :install do
     git_modules
     git_setup_author
 
-    install_homebrew
+    install_system
     install_linkables
     install_folders
     install_fonts
@@ -76,15 +76,18 @@ def git_setup_author
 
 end
 
-def install_homebrew
+def install_system
 
     `which brew`
     unless $?.success?
-        `ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"`
+        puts "Must have homebrew installed and your paths setup correctly first!"
+        return
     end
 
+    `brew install python --universal`
     `brew install ack cmake ctags hub reattach-to-user-namespace tmux`
-    `brew install macvim --override-system-vim`
+    `brew install vim --with-perl --with-tcl --with-python --with-ruby`
+    `pip install --user git+git://github.com/Lokaltog/powerline`
 
 end
 
@@ -160,7 +163,7 @@ def install_fonts
 end
 
 def install_vim_plugins
- 
+
     puts
     puts "Please wait.. it may appear to hang for a minute or two."
     puts
@@ -183,6 +186,6 @@ def update_vim_plugins
     `vim +BundleUpdate +qall > /dev/null 2>&1`
 
     # Update YouCompleteMe plugin
-    #`cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer`
+    `cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer`
 
 end

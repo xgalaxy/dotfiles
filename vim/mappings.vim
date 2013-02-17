@@ -10,22 +10,15 @@ map j gj
 map k gk
 
 " Move between windows easily
-map <c-j> <c-w>j<c-w>_
-map <c-k> <c-w>k<c-w>_
-map <c-l> <c-w>l<c-w>_
-map <c-h> <c-w>h<c-w>_
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
 map <leader>= <c-w>=
 
 " Move between tabs easily
 map <s-h> gT
 map <s-l> gt
-
-" Bubble single lines
-nmap <s-k> [e
-nmap <s-j> ]e
-
-" Toggle invisible characters
-nmap <leader>li :set list!<cr>
 
 " Temporarily turn off search highlighting
 nmap <cr> :noh<cr>

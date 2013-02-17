@@ -24,19 +24,13 @@ set tags+=./tags;/                              " Lookup tags in cwd first, then
 " Interface
 set ttyfast                                     " We have a fast terminal
 set t_Co=256                                    " Enable 256 colors
+set ttimeoutlen=10                              " Terminal timeout
 set encoding=utf-8                              " Default UTF-8 encoding
 set guifont=Source\ Code\ Pro:h14               " In case we are running gui
 set clipboard=unnamed                           " Work with the system clipboard
 set ttymouse=xterm2                             " Enable terminal mouse
 set mouse=a                                     " Enable mouse in all modes
-
-
-set ttimeoutlen=10                              " Enable fast Escape in terminal
-augroup FastEscape
-    autocmd!
-    au InsertEnter * set timeoutlen=0
-    au InsertLeave * set timeoutlen=1000
-augroup END
+set backspace=indent,eol,start                  " Backspace for dummies
 
 set title                                       " Show the title in the terminal
 set tabpagemax=10                               " Only show up to 5 tabs
@@ -50,12 +44,8 @@ set scrolloff=3                                 " Minimum lines to keep below cu
 set ruler                                       " Show the ruler
 set showcmd                                     " Show partial commands in status line
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+set noerrorbells visualbell t_vb=               " No error bells
 set laststatus=2
-
-augroup LongLineWarning                         " Highlight cursor line after 120 characters
-    autocmd!
-    au BufEnter * match ErrorMsg '\%120v.*'
-augroup END
 
 set showmatch                                   " Show matching brackets / parenthesis
 set incsearch                                   " Find as you type search
@@ -90,6 +80,6 @@ set shiftwidth=4                                " Use indents of 4 spaces
 set softtabstop=4                               " Let backspace delete indent
 
 
-" Define key mappings 
+" Other vimrc files
+source ~/.vim/autocmds.vim
 source ~/.vim/mappings.vim
-set backspace=indent,eol,start                  " Backspace for dummies
