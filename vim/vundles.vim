@@ -1,9 +1,9 @@
 ""
-"" vim vundles 
+"" vim vundles
 ""
 
 
-" This is first 
+" This is first
 filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
@@ -18,31 +18,30 @@ Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-repeat'
 Bundle 'sjl/vitality.vim'
 Bundle 'mileszs/ack.vim'
 
 " Navigation
 Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-unimpaired'
 Bundle 'Lokaltog/vim-easymotion'
 
-" Text manipulation 
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tpope/vim-surround'
-
-" Programming
+" Programming / Text manipulation
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
-"Bundle 'xolox/vim-easytags'
-Bundle 'majutsushi/tagbar'
+" Bundle 'xolox/vim-easytags'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-surround'
+" Bundle 'godlygeek/tabular'
 
 " Snippits
 Bundle 'SirVer/ultisnips'
 
 " Filetypes
 Bundle 'tpope/vim-git'
-Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-markdown'
+Bundle 'pangloss/vim-javascript'
 Bundle 'wting/rust.vim'
 
 

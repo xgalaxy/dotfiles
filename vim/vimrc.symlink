@@ -52,9 +52,9 @@ set incsearch                                   " Find as you type search
 set hlsearch                                    " Highlight search
 set ignorecase                                  " Case insensitive search
 set smartcase                                   " Case sensitive when specified
-set complete-=i                                 " Keyword completion: don't scan current & included files
+set completeopt=menu,menuone,longest
 
-set nolist                                      " Default to not showing whitespace, will toggle later 
+set nolist                                      " Default to not showing whitespace, will toggle later
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
     let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"

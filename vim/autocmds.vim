@@ -3,13 +3,10 @@
 ""
 
 
+
 augroup vimrc
 
     autocmd!
-
-    " Enable fast Escape in terminal
-    autocmd InsertEnter * set timeoutlen=0
-    autocmd InsertLeave * set timeoutlen=1000
 
     " Turn of error bells
     autocmd GUIEnter * set visualbell t_vb=
