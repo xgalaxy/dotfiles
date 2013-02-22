@@ -1,7 +1,5 @@
 # Compiled source #
 ###################
-*bin
-*gen
 *.apk
 *.ap_
 *.com
@@ -10,21 +8,40 @@
 *.dex
 *.dll
 *.exe
+*.out
+*.app
+*.lib
+*.lai
+*.la
+*.a
+*.slo
+*.lo
 *.o
+*.so
+*.so.*
+*.dylib
 *.pyc
 *R.java
-*.so
 
 # Packages #
 ############
 *.7z
 *.dmg
+*.xpi
 *.gz
 *.iso
 *.jar
 *.rar
 *.tar
 *.zip
+*.bzip
+*.bz2
+*.xz
+*.lzma
+*.gem
+*.egg
+*.deb
+*.rpm
 
 # IDE generated files #
 #######################
@@ -42,11 +59,22 @@
 *.sql
 *.sqlite
 *.cache
-doc/tags
+tags
+!tags/
+TAGS
+!TAGS/
 
 # OS generated files #
 ######################
 *.pid
 .DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+Icon
+Icon?
 ehthumbs.db
 Thumbs.db
