@@ -15,7 +15,7 @@ Bundle 'gmarik/vundle'
 
 
 " General
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-unimpaired'
