@@ -8,7 +8,7 @@
 
 # Indent style
 --convert-tabs
---index=spaces=4
+--indent=spaces=4
 --indent-preprocessor
 --indent-col1-comments
 --indent-namespaces

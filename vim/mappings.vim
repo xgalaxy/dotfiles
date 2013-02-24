@@ -49,3 +49,6 @@ nnoremap <F6> :YcmShowDetailedDiagnostic<cr>
 let g:UltiSnipsExpandTrigger = '<c-f>'
 let g:UltiSnipsJumpForwardTrigger = '<c-f>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-d>'
+
+" Artistic Style
+nnoremap <F7> :%!astyle<cr>
