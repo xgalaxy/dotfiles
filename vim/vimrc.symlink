@@ -12,73 +12,73 @@ source ~/.vim/vundles.vim
 
 
 " General
-set hidden										" Allow buffer switching without saving
-set history=1000								" Store a ton of history (default is 20)
-set undolevels=1000								" Number of changes that are saved
-set nobackup									" I don't need backups
-set noswapfile									" I don't need swap files
+set hidden                                      " Allow buffer switching without saving
+set history=1000                                " Store a ton of history (default is 20)
+set undolevels=1000                             " Number of changes that are saved
+set nobackup                                    " I don't need backups
+set noswapfile                                  " I don't need swap files
 
-set tags+=./tags;/								" Lookup tags in cwd first, then up
+set tags+=./tags;/                              " Lookup tags in cwd first, then up
 
 
 " Interface
-set ttyfast										" We have a fast terminal
-set t_Co=256									" Enable 256 colors
-set ttimeoutlen=10								" Terminal timeout
-set encoding=utf-8								" Default UTF-8 encoding
-set guifont=Source\ Code\ Pro:h14				" In case we are running gui
-set clipboard=unnamed							" Work with the system clipboard
-set ttymouse=xterm2								" Enable terminal mouse
-set mouse=a										" Enable mouse in all modes
-set backspace=indent,eol,start					" Backspace for dummies
+set ttyfast                                     " We have a fast terminal
+set t_Co=256                                    " Enable 256 colors
+set ttimeoutlen=10                              " Terminal timeout
+set encoding=utf-8                              " Default UTF-8 encoding
+set guifont=Source\ Code\ Pro:h14               " In case we are running gui
+set clipboard=unnamed                           " Work with the system clipboard
+set ttymouse=xterm2                             " Enable terminal mouse
+set mouse=a                                     " Enable mouse in all modes
+set backspace=indent,eol,start                  " Backspace for dummies
 
-set title										" Show the title in the terminal
-set tabpagemax=10								" Only show up to 5 tabs
-set noshowmode									" Don't show the current editor mode
-set cursorline									" Show current line
-set number										" Show line numbers
-set nowrap										" Don't wrap long lines
-set linebreak									" Wrap at word (if word wrapping)
-set scrolloff=3									" Minimum lines to keep below current line
+set title                                       " Show the title in the terminal
+set tabpagemax=10                               " Only show up to 5 tabs
+set noshowmode                                  " Don't show the current editor mode
+set cursorline                                  " Show current line
+set number                                      " Show line numbers
+set nowrap                                      " Don't wrap long lines
+set linebreak                                   " Wrap at word (if word wrapping)
+set scrolloff=3                                 " Minimum lines to keep below current line
 
-set ruler										" Show the ruler
-set showcmd										" Show partial commands in status line
+set ruler                                       " Show the ruler
+set showcmd                                     " Show partial commands in status line
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-set noerrorbells visualbell t_vb=				" No error bells
+set noerrorbells visualbell t_vb=               " No error bells
 set laststatus=2
 
-set showmatch									" Show matching brackets / parenthesis
-set incsearch									" Find as you type search
-set hlsearch									" Highlight search
-set ignorecase									" Case insensitive search
-set smartcase									" Case sensitive when specified
+set showmatch                                   " Show matching brackets / parenthesis
+set incsearch                                   " Find as you type search
+set hlsearch                                    " Highlight search
+set ignorecase                                  " Case insensitive search
+set smartcase                                   " Case sensitive when specified
 set completeopt=menu,menuone,longest
 
-set nolist										" Default to not showing whitespace, will toggle later
+set nolist                                      " Default to not showing whitespace, will toggle later
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
-	let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
+    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
 endif
 
-set wildmenu									" Show list instead of just completing
-set wildmode=list:longest,full					" Command <Tab> completion, list matches, then longest common part, then all
+set wildmenu                                    " Show list instead of just completing
+set wildmode=list:longest,full                  " Command <Tab> completion, list matches, then longest common part, then all
 set wildignore+=*.o,*.out,*.obj,*.exe,*.so,*.dll,.git,*.rbc,*.rbo,*.class,*.svn,*.gem
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set wildignore+=*.swp,*~,._*
 
-set equalalways									" multiple windows are equal in size
-set splitbelow									" Split horiontally below
-set splitright									" Split vertically right
+set equalalways                                 " multiple windows are equal in size
+set splitbelow                                  " Split horiontally below
+set splitright                                  " Split vertically right
 
 
 " Tabs are four columns wide
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab
-set autoindent									" Indent at the same level of previous line
+set expandtab
+set autoindent                                  " Indent at the same level of previous line
 
 
 " Other vimrc files

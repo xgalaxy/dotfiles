@@ -1,0 +1,27 @@
+--suffix=none
+--lineend=linux
+
+# Bracket style
+--style=ansi
+--add-brackets
+--break-closing-brackets
+
+# Indent style
+--convert-tabs
+--index=spaces=4
+--indent-preprocessor
+--indent-col1-comments
+--indent-namespaces
+--indent-switches
+--indent-labels
+--min-conditional-indent=0
+
+# Padding style
+--break-blocks
+--unpad-paren
+--pad-header
+--pad-oper
+
+# Misc
+--align-pointer=type
+--align-reference=type
