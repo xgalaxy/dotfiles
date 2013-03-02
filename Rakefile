@@ -87,9 +87,9 @@ def install_system
 	puts "Please wait.. it may appear to hang for a minute or two."
 	puts
 
-	`brew install ack cmake ctags hub wget`
+	`brew install ack astyle cmake ctags hub wget`
 	`brew install macvim --override-system-vim --custom-icons`
-	`brew install emacs --cocoa --srgb`
+	`brew install emacs --HEAD --use-git-head --cocoa --srgb`
 	`brew linkapps`
 
 	# Now we can make sure vim plugins are installed
