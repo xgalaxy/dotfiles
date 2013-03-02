@@ -3,7 +3,6 @@
 
 # Bracket style
 --style=ansi
---add-brackets
 --break-closing-brackets
 
 # Indent style
@@ -17,7 +16,6 @@
 --min-conditional-indent=0
 
 # Padding style
---break-blocks
 --unpad-paren
 --pad-header
 --pad-oper
