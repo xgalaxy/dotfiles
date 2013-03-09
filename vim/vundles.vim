@@ -25,6 +25,8 @@ Bundle 'mileszs/ack.vim'
 
 " Navigation
 Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Lokaltog/vim-easymotion'
 
 " Programming / Text manipulation
@@ -33,7 +35,7 @@ Bundle 'scrooloose/syntastic'
 " Bundle 'xolox/vim-easytags'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
-" Bundle 'godlygeek/tabular'
+Bundle 'godlygeek/tabular'
 
 " Snippits
 Bundle 'SirVer/ultisnips'

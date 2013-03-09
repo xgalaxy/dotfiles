@@ -37,6 +37,9 @@ map <leader>fl :CtrlPLine<cr>
 map <leader>ft :CtrlPTag<cr>
 map <leader>fc :CtrlPBufTag<cr>
 
+" NERDTree
+map <leader>fo :NERDTreeTabsToggle<cr>
+
 " YouCompleteMe
 let g:ycm_key_invoke_completion = ''
 let g:ycm_key_list_select_completion = ['<tab>', '<down>']
