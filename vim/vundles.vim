@@ -42,7 +42,6 @@ Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-markdown'
 Bundle 'pangloss/vim-javascript'
-Bundle 'wting/rust.vim'
 
 
 
