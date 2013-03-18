@@ -55,3 +55,13 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-d>'
 
 " Artistic Style
 nnoremap <F7> :%!astyle<cr>
+
+" Toggle tabs
+function TabToggle()
+    if &expandtab
+        set noexpandtab
+    else
+        set expandtab
+    endif
+endfunction
+nnoremap <F8> :execute TabToggle()<cr>
