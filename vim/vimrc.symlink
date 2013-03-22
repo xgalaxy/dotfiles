@@ -77,7 +77,7 @@ set splitright                                  " Split vertically right
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab
 set autoindent                                  " Indent at the same level of previous line
 
 

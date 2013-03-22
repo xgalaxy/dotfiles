@@ -2,21 +2,21 @@
 --lineend=linux
 
 # Bracket style
---style=ansi
---break-closing-brackets
+--style=attach
+--add-brackets
 
 # Indent style
---convert-tabs
---indent=spaces=4
---indent-preprocessor
+--indent=force-tab=4
 --indent-col1-comments
 --indent-namespaces
 --indent-switches
+--indent-cases
 --indent-labels
---min-conditional-indent=0
+--min-conditional-indent=1
 
 # Padding style
 --unpad-paren
+--pad-paren-in
 --pad-header
 --pad-oper
 
