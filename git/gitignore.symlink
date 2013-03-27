@@ -45,11 +45,13 @@
 
 # IDE generated files #
 #######################
+*.vcxproj.user
 *xcuserdata*
 *.project
 *.pbxuser
 *.mode1v3
 *.swp
+*.suo
 
 # Logs and databases #
 ######################
