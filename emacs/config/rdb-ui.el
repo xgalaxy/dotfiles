@@ -37,6 +37,10 @@
 ;; Enable mode aware fonts
 (global-font-lock-mode 1)
 
+;; Parenthesis settings
+(setq show-paren-style 'expression)
+(show-paren-mode t)
+
 ;; Mode line
 (line-number-mode t)
 (column-number-mode t)

@@ -1,15 +1,18 @@
 ;;
-;; SmartParens settings
+;; Parentheses settings
 
 (require 'smartparens)
 (require 'smartparens-config)
+;;(require 'zenburn)
 
 
-;; Enable
+;; Enable smart parens
 (smartparens-global-mode t)
 
-;; Highlight matching pairs
+;; Display settings
+(setq show-paren-style 'expression)
 (show-smartparens-global-mode t)
+(show-paren-mode t)
 
 ;; Markdown settings
 (sp-with-modes '(markdown-mode gfm-mode rst-mode)
@@ -22,4 +25,4 @@
 
 
 ;;
-(provide 'rdb-smartparens)
+(provide 'rdb-parens)
