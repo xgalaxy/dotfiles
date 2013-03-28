@@ -3,10 +3,12 @@
 ;;
 
 
+;; Bootstrap config
 (add-to-list 'load-path "~/.emacs.d/config")
-;;(add-to-list 'load-path "~/.emacs.d/vendor")
 (require 'rdb-utils)
 
+;; Load vendor
+(rdb/add-subfolders-to-load-path "~/.emacs.d/vendor")
 
 ;; Load packages
 (defvar rdb/packages

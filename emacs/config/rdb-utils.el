@@ -26,6 +26,16 @@
 	  (when (not (package-installed-p p))
 		(package-install p)))))
 
+(defun rdb/add-subfolders-to-load-path (parent-dir)
+  "Add parent and all subfolders to load path."
+  (add-to-list 'load-path parent-dir)
+  (dolist (f (directory-files parent-dir))
+	(let ((name (expand-file-name f parent-dir)))
+	  (when (and (file-directory-p name)
+				 (not (equal f ".."))
+				 (not (equal f ".")))
+		(add-to-list 'load-path name)))))
+
 
 ;;
 (provide 'rdb-utils)
