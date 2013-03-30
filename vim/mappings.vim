@@ -40,14 +40,6 @@ map <leader>fc :CtrlPBufTag<cr>
 " NERDTree
 map <leader>fo :NERDTreeTabsToggle<cr>
 
-" YouCompleteMe
-let g:ycm_key_invoke_completion = ''
-let g:ycm_key_list_select_completion = ['<tab>', '<down>']
-let g:ycm_key_list_previous_completion = ['<s-tab>', '<up>']
-let g:ycm_key_detailed_diagnostics = '<leader>d'
-nnoremap <F5> :YcmForceCompileAndDiagnostics<cr>
-nnoremap <F6> :YcmShowDetailedDiagnostic<cr>
-
 " UltiSnips
 let g:UltiSnipsExpandTrigger = '<c-f>'
 let g:UltiSnipsJumpForwardTrigger = '<c-f>'

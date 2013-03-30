@@ -1,4 +1,4 @@
-""
+"
 "" vim vundles
 ""
 
@@ -30,8 +30,6 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Lokaltog/vim-easymotion'
 
 " Programming / Text manipulation
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
 " Bundle 'xolox/vim-easytags'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
