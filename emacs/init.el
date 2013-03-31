@@ -1,25 +1,33 @@
 ;;
-;; My config
+;; Emacs Initialization
 ;;
 
+(require 'package)
 
-;; Bootstrap config
-(add-to-list 'load-path "~/.emacs.d/config")
-(require 'rdb-utils)
 
-;; Load vendor
-(rdb/add-subfolders-to-load-path "~/.emacs.d/vendor")
+;; Initialize and refresh package system.
+(add-to-list 'package-archives
+			 '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
-;; Load packages
+;; Define packages to install.
 (defvar rdb/packages
-  '(ace-jump-mode auto-complete evil evil-leader evil-numbers gist helm
-				  idle-highlight-mode lua-mode magit markdown-mode
-				  rainbow-mode smartparens smart-tabs-mode smex undo-tree
-				  yasnippet zenburn-theme zencoding-mode))
-(rdb/init-package-system)
-(rdb/install-packages rdb/packages)
+  '(ace-jump-mode auto-complete evil evil-leader evil-numbers gist
+	idle-highlight-mode ido-ubiquitous lua-mode magit markdown-mode
+	rainbow-mode smartparens smart-tabs-mode smex undo-tree yasnippet
+	zenburn-theme zencoding-mode))
 
-;; Load settings
-(defvar rdb/settings
-  '(rdb-ui rdb-editor rdb-smarttabs rdb-parens rdb-evil rdb-c))
-(mapc #'require rdb/settings)
+;; Install packages.
+(dolist (p rdb/packages)
+  (when (not (package-installed-p p))
+	(package-install p)))
+
+;; Define load paths.
+(add-to-list 'load-path "~/.emacs.d/config")
+(add-to-list 'load-path "~/.emacs.d/vendor/evil-surround")
+
+;; Install settings.
+(mapc 'require
+   '(rdb-ui rdb-editor rdb-smarttabs rdb-parens rdb-ido rdb-evil rdb-c))
