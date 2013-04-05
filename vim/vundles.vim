@@ -41,7 +41,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'SirVer/ultisnips'
 
 " Filetypes
-Bundle 'vi-jp/cpp-vim'
+Bundle 'vim-jp/cpp-vim'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-markdown'
 Bundle 'pangloss/vim-javascript'
