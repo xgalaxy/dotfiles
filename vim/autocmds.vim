@@ -8,7 +8,7 @@ augroup vimrc
 
     autocmd!
 
-    " Turn of error bells
+    " Turn off error bells
     autocmd GUIEnter * set visualbell t_vb=
 
     " Highlight cursor line after 120 characters

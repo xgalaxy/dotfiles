@@ -17,6 +17,7 @@ Bundle 'gmarik/vundle'
 " General
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-repeat'
@@ -30,6 +31,7 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Lokaltog/vim-easymotion'
 
 " Programming / Text manipulation
+Bundle 'terryma/vim-expand-region'
 " Bundle 'xolox/vim-easytags'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
@@ -39,6 +41,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'SirVer/ultisnips'
 
 " Filetypes
+Bundle 'vi-jp/cpp-vim'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-markdown'
 Bundle 'pangloss/vim-javascript'
