@@ -57,3 +57,13 @@ function TabToggle()
     endif
 endfunction
 nnoremap <F8> :execute TabToggle()<cr>
+
+" Toggle relative linum
+function LinumToggle()
+	if &relativenumber
+		set number
+	else
+		set relativenumber
+	endif
+endfunction
+nnoremap <F9> :execute LinumToggle()<cr>
