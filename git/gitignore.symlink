@@ -2,24 +2,14 @@
 ###################
 *.apk
 *.ap_
-*.com
 *.class
 *.classpath
 *.dex
-*.dll
-*.exe
 *.out
-*.app
-*.lib
 *.lai
-*.la
-*.a
 *.slo
 *.lo
 *.o
-*.so
-*.so.*
-*.dylib
 *.pyc
 *R.java
 

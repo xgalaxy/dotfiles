@@ -89,7 +89,6 @@ def install_system
 
 	`brew install ack astyle cmake ctags hub wget`
 	`brew install macvim --override-system-vim --custom-icons`
-	`brew install emacs --cocoa --srgb`
 	`brew install aspell --lang=en`
 	`brew linkapps`
 
@@ -139,7 +138,6 @@ def install_folders
 	folders = [
 		['bin'],
 		['vim', '.vim'],
-		['emacs', '.emacs.d'],
 		['zsh/prezto.fork', '.zprezto'],
 	]
 
