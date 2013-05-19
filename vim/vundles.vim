@@ -1,6 +1,6 @@
 "
-"" vim vundles
-""
+" vim vundles
+"
 
 
 " This is first
@@ -13,16 +13,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 
-
 " General
 Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-repeat'
 Bundle 'sjl/vitality.vim'
-Bundle 'mileszs/ack.vim'
 
 " Navigation
 Bundle 'kien/ctrlp.vim'
@@ -31,9 +28,10 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Lokaltog/vim-easymotion'
 
 " Programming / Text manipulation
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'terryma/vim-expand-region'
-" Bundle 'xolox/vim-easytags'
-Bundle 'tpope/vim-commentary'
+Bundle 'Raimondi/delimitMate'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 
@@ -45,7 +43,6 @@ Bundle 'vim-jp/cpp-vim'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-markdown'
 Bundle 'pangloss/vim-javascript'
-
 
 
 " This is last

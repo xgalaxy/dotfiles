@@ -1,6 +1,6 @@
-""
-"" vim color scheme settings
-""
+"
+" vim color scheme settings
+"
 
 
 set background=dark

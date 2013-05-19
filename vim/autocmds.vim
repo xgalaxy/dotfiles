@@ -1,7 +1,6 @@
-""
-"" vim auto command settings
-""
-
+"
+" vim auto command settings
+"
 
 
 augroup vimrc

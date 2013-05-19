@@ -1,15 +1,13 @@
-""
-"" vim setup
-""
+"
+" vim setup
+"
 
 
 " Prefer vim over vi compatibility
 set nocompatible
 
-
 " Load vundles
 source ~/.vim/vundles.vim
-
 
 " General
 set hidden                                      " Allow buffer switching without saving
@@ -19,7 +17,6 @@ set nobackup                                    " I don't need backups
 set noswapfile                                  " I don't need swap files
 
 set tags+=./tags;/                              " Lookup tags in cwd first, then up
-
 
 " Interface
 set ttyfast                                     " We have a fast terminal
@@ -72,14 +69,12 @@ set equalalways                                 " multiple windows are equal in 
 set splitbelow                                  " Split horiontally below
 set splitright                                  " Split vertically right
 
-
 " Tabs are four columns wide
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 set autoindent                                  " Indent at the same level of previous line
-
 
 " Other vimrc files
 source ~/.vim/autocmds.vim

@@ -1,6 +1,6 @@
-""
-"" vim powerline settings
-""
+"
+" vim powerline settings
+"
 
 
 let g:Powerline_colorscheme = 'solarized256'

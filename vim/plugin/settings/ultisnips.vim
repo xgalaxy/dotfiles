@@ -1,6 +1,6 @@
-""
-"" vim ultisnips settings
-""
+"
+" vim ultisnips settings
+"
 
 
 let g:UltiSnipsUsePythonVersion = 2
