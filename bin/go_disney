@@ -1,8 +1,0 @@
-export MDISNEY_HOME=~/Develop/iddk
-export PROD_HOME=${MDISNEY_HOME}/mo/production
-
-path=(
-  ${MDISNEY_HOME}/Living_Mobile/tools/bin
-  ${MDISNEY_HOME}/mo/production/global_framework/build_tools/bin
-  $path
-)
