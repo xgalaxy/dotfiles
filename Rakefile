@@ -87,9 +87,9 @@ def install_system
 	puts "Please wait.. it may appear to hang for a minute or two."
 	puts
 
-	`brew install ack astyle cmake ctags hub wget`
+	`brew install astyle cmake ctags doxygen git git-flow`
+	`brew install mercurial node the_silver_searcher wget`
 	`brew install macvim --override-system-vim --custom-icons`
-	`brew install aspell --lang=en`
 	`brew linkapps`
 
 	# Now we can make sure vim plugins are installed
@@ -178,7 +178,7 @@ def install_vim_plugins
 	`vim +BundleInstall +qall > /dev/null 2>&1`
 
 	# Update YouCompleteMe plugin
-	`cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer`
+	`cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer --omnisharp-completer`
 
 end
 
@@ -192,6 +192,6 @@ def update_vim_plugins
 	`vim +BundleUpdate +qall > /dev/null 2>&1`
 
 	# Update YouCompleteMe plugin
-	`cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer`
+	`cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer --omnisharp-completer`
 
 end

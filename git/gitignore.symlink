@@ -3,7 +3,6 @@
 *.apk
 *.ap_
 *.class
-*.classpath
 *.dex
 *.out
 *.lai
@@ -36,7 +35,6 @@
 #######################
 *.vcxproj.user
 *xcuserdata*
-*.project
 *.pbxuser
 *.mode1v3
 *.swp
