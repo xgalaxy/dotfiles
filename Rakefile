@@ -136,7 +136,6 @@ end
 def install_folders
 
 	folders = [
-		['bin'],
 		['vim', '.vim'],
 		['zsh/prezto.fork', '.zprezto'],
 	]
