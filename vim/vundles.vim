@@ -27,7 +27,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Lokaltog/vim-easymotion'
 
-" Programming / Text manipulation
+" Text manipulation
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'terryma/vim-expand-region'
 Bundle 'Raimondi/delimitMate'
@@ -35,7 +35,8 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 
-" Snippits
+" IDE / Snippits
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
 
 " Filetypes
