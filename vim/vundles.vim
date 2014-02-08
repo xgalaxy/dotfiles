@@ -38,6 +38,7 @@ Bundle 'godlygeek/tabular'
 " IDE / Snippits
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-fugitive'
 
 " Filetypes
 Bundle 'vim-jp/cpp-vim'
