@@ -66,7 +66,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set wildignore+=*.swp,*~,._*
 
 set equalalways                                 " multiple windows are equal in size
-set splitbelow                                  " Split horiontally below
+set splitbelow                                  " Split horizontally below
 set splitright                                  " Split vertically right
 
 " Tabs are four columns wide

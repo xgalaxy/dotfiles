@@ -1,11 +1,11 @@
 require 'rake'
 
 
-desc "Installs our dotfiles."
+desc "Installs dotfiles."
 task :install do
 
+	git_setup
 	git_modules
-	git_setup_author
 
 	install_system
 	install_linkables
@@ -52,14 +52,7 @@ task :default => 'install'
 
 private
 
-def git_modules
-
-	`git pull --recurse-submodules`
-	`git submodule update --init --recursive`
-
-end
-
-def git_setup_author
+def git_setup
 
 	puts
 	puts "What is your git author name?"
@@ -69,9 +62,16 @@ def git_setup_author
 	puts "What is your git author email?"
 	author_email = STDIN.gets.chomp
 
-	`sed -e "s/AUTHOR_NAME/#{author_name}/g" -e "s/AUTHOR_EMAIL/#{author_email}/g" git/gitconfig.symlink.example > git/gitconfig.symlink`
+	`sed -e "s/AUTHOR_NAME/#{author_name}/g" -e "s/AUTHOR_EMAIL/#{author_email}/g" git/gitconfig.template > git/gitconfig.symlink`
 
 	puts
+
+end
+
+def git_modules
+
+	`git pull --recurse-submodules`
+	`git submodule update --init --recursive`
 
 end
 
