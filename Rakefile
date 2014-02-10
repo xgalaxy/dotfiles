@@ -11,6 +11,7 @@ task :install do
 	install_linkables
 	install_folders
 	install_fonts
+	install_iterm_themes
 
 	`chsh -s /bin/zsh`
 
@@ -24,6 +25,7 @@ task :update do
 	install_linkables
 	install_folders
 	install_fonts
+	install_prezto
 	update_vim_plugins
 
 end
@@ -77,6 +79,10 @@ end
 
 def install_system
 
+	# Make sure prezto is setup
+	install_prezto
+
+	# Grab wanted brews
 	`which brew`
 	unless $?.success?
 		puts "Must have homebrew installed and your paths setup correctly first!"
@@ -89,7 +95,8 @@ def install_system
 
 	`brew install astyle cmake ctags doxygen git git-flow`
 	`brew install mercurial node the_silver_searcher wget`
-	`brew install macvim --override-system-vim --custom-icons`
+	`brew install macvim --override-system-vim --custom-icons --with-lua --with-luajit`
+	`brew install emacs --cocoa --srgb`
 	`brew linkapps`
 
 	# Now we can make sure vim plugins are installed
@@ -103,14 +110,12 @@ def install_linkables
 	overwrite_all = false;
 	backup_all = false;
 
-	linkables = Dir.glob('*/**/*{.symlink}')
-	linkables.each do |linkable|
+	links = Dir[File.join("#{ENV['PWD']}", '**', '*.{symlink}')].each do |linkable|
 		overwrite = false
 		backup = false
 
 		file = linkable.split('/').last.split('.symlink').last
 		target = "#{ENV['HOME']}/.#{file}"
-
 		if File.exists?(target) or File.symlink?(target)
 			unless skip_all or overwrite_all or backup_all
 				puts "File already exists: #{target}, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
@@ -128,7 +133,7 @@ def install_linkables
 			`mv "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
 		end
 
-		`ln -s "$PWD/#{linkable}" "#{target}"` if not skip_all
+		`ln -s "#{linkable}" "#{target}"` if not skip_all
 	end
 
 end
@@ -136,8 +141,10 @@ end
 def install_folders
 
 	folders = [
+		['zsh', '.zsh'],
 		['vim', '.vim'],
-		['zsh/prezto.fork', '.zprezto'],
+		['emacs', '.emacs.d'],
+		['zsh/prezto', '.zprezto'],
 	]
 
 	folders.each do |folder|
@@ -164,6 +171,28 @@ def install_fonts
 
 		`cp -f "#{font}" "#{target}"`
 	end
+
+end
+
+def install_iterm_themes
+	`/usr/libexec/PlistBuddy -c "Add :'Custom Color Presets':'Solarized Light' dict" ~/Library/Preferences/com.googlecode.iterm2.plist }`
+	`/usr/libexec/PlistBuddy -c "Merge 'colors/Solarized Light.itermcolors' :'Custom Color Presets':'Solarized Light'" ~/Library/Preferences/com.googlecode.iterm2.plist }`
+	`/usr/libexec/PlistBuddy -c "Add :'Custom Color Presets':'Solarized Dark' dict" ~/Library/Preferences/com.googlecode.iterm2.plist }`
+	`/usr/libexec/PlistBuddy -c "Merge 'colors/Solarized Dark.itermcolors' :'Custom Color Presets':'Solarized Dark'" ~/Library/Preferences/com.googlecode.iterm2.plist }`
+end
+
+def install_prezto
+
+	FileUtils.rm("#{ENV['HOME']}/.zlogin")
+	FileUtils.rm("#{ENV['HOME']}/.zlogout")
+	FileUtils.rm("#{ENV['HOME']}/.zprofile")
+	FileUtils.rm("#{ENV['HOME']}/.zshenv")
+
+	# zpreztorc and zshrc are overidden and symlinked elsewhere
+	`ln -s "#{ENV['PWD']}/zsh/prezto/runcoms/zlogin" "#{ENV['HOME']}/.zlogin"`
+	`ln -s "#{ENV['PWD']}/zsh/prezto/runcoms/zlogout" "#{ENV['HOME']}/.zlogout"`
+	`ln -s "#{ENV['PWD']}/zsh/prezto/runcoms/zprofile" "#{ENV['HOME']}/.zprofile"`
+	`ln -s "#{ENV['PWD']}/zsh/prezto/runcoms/zshenv" "#{ENV['HOME']}/.zshenv"`
 
 end
 

@@ -1,0 +1,45 @@
+#
+# First, setup paths
+#
+
+path=(
+	$HOME/.rvm/bin
+	$path
+)
+
+fpath=(
+	$HOME/.zsh/themes
+	$fpath
+)
+
+
+#
+# Second, source Prezto's zshrc
+#
+
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc" ]]; then
+	source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc"
+fi
+
+
+#
+# Third, any custom stuff
+#
+
+# Load RVM into a shell session *as a function*
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+	source "$HOME/.rvm/scripts/rvm"
+fi
+
+export PYTHONPATH='/usr/local/lib/python2.7/site-packages:$PYTHONPATH'
+export EDITOR='vim'
+export VISUAL='vim'
+
+# Turn off auto completion of hosts
+zstyle ':completion:*' hosts off
+
+# Speed up git completion because its crap slow
+__git_files () {
+	_wanted files expl 'local files' _files
+}
+
