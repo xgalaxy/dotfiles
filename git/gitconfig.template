@@ -7,7 +7,6 @@
         branch = auto
         interactive = auto
 [core]
-		autocrlf = true
         excludesfile = ~/.gitignore
         editor = vim
 [push]
