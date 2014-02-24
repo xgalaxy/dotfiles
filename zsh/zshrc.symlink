@@ -3,13 +3,12 @@
 #
 
 path=(
-	$HOME/.rvm/bin
 	$path
+	$HOME/.rvm/bin
 )
-
 fpath=(
-	$HOME/.zsh/themes
 	$fpath
+	$HOME/.zsh/themes
 )
 
 
@@ -42,4 +41,3 @@ zstyle ':completion:*' hosts off
 __git_files () {
 	_wanted files expl 'local files' _files
 }
-

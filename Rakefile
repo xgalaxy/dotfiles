@@ -17,8 +17,8 @@ task :install do
 
 end
 
-desc "Updates our existing dotfiles."
-task :update do
+desc "Updates shell."
+task :updateshell do
 
 	git_modules
 
@@ -26,6 +26,12 @@ task :update do
 	install_folders
 	install_fonts
 	install_prezto
+
+end
+
+desc "Updates vim plugins."
+task :updatevim do
+
 	update_vim_plugins
 
 end
@@ -93,10 +99,11 @@ def install_system
 	puts "Please wait.. it may appear to hang for a minute or two."
 	puts
 
+	`brew install reattach-to-user-namespace tmux`
 	`brew install astyle cmake ctags doxygen git git-flow`
-	`brew install mercurial node the_silver_searcher wget`
+	`brew install mercurial the_silver_searcher wget`
 	`brew install macvim --override-system-vim --custom-icons --with-lua --with-luajit`
-	`brew install emacs --cocoa --srgb`
+	`brew install weechat --with-python --with-ruby`
 	`brew linkapps`
 
 	# Now we can make sure vim plugins are installed
@@ -143,7 +150,6 @@ def install_folders
 	folders = [
 		['zsh', '.zsh'],
 		['vim', '.vim'],
-		['emacs', '.emacs.d'],
 		['zsh/prezto', '.zprezto'],
 	]
 
