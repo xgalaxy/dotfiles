@@ -100,7 +100,7 @@ def install_system
 	puts
 
 	`brew install reattach-to-user-namespace tmux`
-	`brew install astyle cmake ctags doxygen git git-flow`
+	`brew install cmake ctags uncrustify git git-flow`
 	`brew install mercurial the_silver_searcher wget`
 	`brew install macvim --override-system-vim --custom-icons --with-lua --with-luajit`
 	`brew install weechat --with-python --with-ruby`
@@ -151,6 +151,7 @@ def install_folders
 		['zsh', '.zsh'],
 		['vim', '.vim'],
 		['zsh/prezto', '.zprezto'],
+		['weechat', '.weechat'],
 	]
 
 	folders.each do |folder|
