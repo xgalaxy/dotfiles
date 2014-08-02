@@ -103,7 +103,6 @@ def install_system
 	`brew install cmake ctags uncrustify git git-flow`
 	`brew install mercurial the_silver_searcher wget`
 	`brew install macvim --override-system-vim --custom-icons --with-lua --with-luajit`
-	`brew install weechat --with-python --with-ruby`
 	`brew linkapps`
 
 	# Now we can make sure vim plugins are installed
@@ -151,7 +150,6 @@ def install_folders
 		['zsh', '.zsh'],
 		['vim', '.vim'],
 		['zsh/prezto', '.zprezto'],
-		['weechat', '.weechat'],
 	]
 
 	folders.each do |folder|

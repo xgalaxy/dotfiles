@@ -18,6 +18,7 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'ruby' \
   'syntax-highlighting' \
+  'history-substring-search' \
   'prompt'
 
 # Set the key mapping style to 'emacs' or 'vi'.

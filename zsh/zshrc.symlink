@@ -33,6 +33,7 @@ fi
 export PYTHONPATH='/usr/local/lib/python2.7/site-packages:$PYTHONPATH'
 export EDITOR='vim'
 export VISUAL='vim'
+export MAVEN_OPTS='-Dfile.encoding=UTF-8 -XX:MaxPermSize=2048M -Xmx2048M'
 
 # Turn off auto completion of hosts
 zstyle ':completion:*' hosts off
