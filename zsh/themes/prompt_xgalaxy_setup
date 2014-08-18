@@ -88,8 +88,11 @@ function prompt_xgalaxy_setup
   zstyle ':vcs_info:git*+set-message:*' hooks git-status
 
   # Define prompts.
-  PROMPT='$(build_left_prompt) ${editor_info[keymap]} '
+  PROMPT='
+$(build_left_prompt) ${editor_info[keymap]} '
+
   RPROMPT='${vcs_info_msg_0_}'
+
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 

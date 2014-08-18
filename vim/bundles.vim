@@ -37,7 +37,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 
 NeoBundle 'Valloric/YouCompleteMe', {
 	\   'build': {
-	\     'mac': './install.sh --clang-completer --omnisharp-completer',
+	\     'mac': 'git submodule update --init --recursive && ./install.sh --clang-completer --omnisharp-completer',
 	\   },
 	\ }
 

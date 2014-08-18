@@ -33,7 +33,14 @@ fi
 export PYTHONPATH='/usr/local/lib/python2.7/site-packages:$PYTHONPATH'
 export EDITOR='vim'
 export VISUAL='vim'
+
+# Disney / Work settings
 export MAVEN_OPTS='-Dfile.encoding=UTF-8 -XX:MaxPermSize=2048M -Xmx2048M'
+#export JAVA_HOME='/usr/libexec/java_home -v 1.6.0_65'
+export ANDROID_SDK_ROOT='~/Develop/android-sdk'
+export ANDROID_NDK_ROOT='~/Develop/android-sdk/android-ndk-r10'
+export UNITY_HOME='/Applications/Unity/Unity.app'
+
 
 # Turn off auto completion of hosts
 zstyle ':completion:*' hosts off
