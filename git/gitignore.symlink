@@ -11,26 +11,6 @@
 *.o
 *.pyc
 
-# Packages #
-############
-*.7z
-*.dmg
-*.xpi
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-*.bzip
-*.bz2
-*.xz
-*.lzma
-*.gem
-*.egg
-*.deb
-*.rpm
-
 # IDE generated files #
 #######################
 *.vcxproj.user

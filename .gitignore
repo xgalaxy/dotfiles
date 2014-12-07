@@ -4,5 +4,4 @@ vim/bundle/*
 vim/_undo/*
 vim/_swap/*
 vim/_backup/*
-weechat/logs/*
-weechat.log
+emacs/elpa/*

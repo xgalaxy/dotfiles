@@ -1,0 +1,11 @@
+set -gx EDITOR vim
+set -gx VISUAL vim
+
+_prepend_path /usr/local/opt/go/libexec/bin
+
+set -gx PYTHONPATH /usr/local/lib/python2.7/site-packages
+set -gx MAVEN_OPTS -Dfile.encoding=UTF-8 -XX:MaxPermSize=2048M -Xmx2048M
+set -gx ANDROID_HOME $HOME/Develop/android-sdk
+set -gx ANDROID_SDK_ROOT $HOME/Develop/android-sdk
+set -gx ANDROID_NDK_ROOT $HOME/Develop/android-sdk/android-ndk-r10
+set -gx UNITY_HOME /Applications/Unity/Unity.app

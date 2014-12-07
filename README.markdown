@@ -1,20 +1,13 @@
 # dotfiles
 
 Probably only works on OSX.
-This is my configuration files for development, primarily in C/C++.
+This is my configuration files for development, primarily in C/C++, C#, Java, and Javascript.
 
 ### todo
-- look into vim-easytags
-- look into better syntax highlighting (Lokaltog/taghighlight ?)
-- replace solarized with something else (tomorrow theme maybe ?)
-- powerline
--- create own theme
---- status lines for ctrlp, syntastic, ycm
+- powerline ?
 - tmux setup
 -- key mappings
 -- temuxinator ?
-
-
 
 ## installing
 ```

@@ -1,3 +1,6 @@
-[submodule "zsh/prezto"]
-	path = zsh/prezto
-	url = https://github.com/sorin-ionescu/prezto.git
+[submodule "fish/oh-my-fish"]
+	path = fish/oh-my-fish
+	url = git@github.com:bpinto/oh-my-fish.git
+[submodule "emacs/spacemacs"]
+	path = emacs/spacemacs
+	url = git@github.com:syl20bnr/spacemacs.git

@@ -7,13 +7,9 @@ task :install do
 	git_setup
 	git_modules
 
-	install_system
-	install_linkables
-	install_folders
 	install_fonts
 	install_iterm_themes
-
-	`chsh -s /bin/zsh`
+	install_system
 
 end
 
@@ -22,17 +18,10 @@ task :updateshell do
 
 	git_modules
 
+	install_fonts
 	install_linkables
 	install_folders
-	install_fonts
-	install_prezto
-
-end
-
-desc "Updates vim plugins."
-task :updatevim do
-
-	update_vim_plugins
+	install_shell
 
 end
 
@@ -55,8 +44,6 @@ task :uninstall do
 end
 
 task :default => 'install'
-
-
 
 private
 
@@ -85,9 +72,6 @@ end
 
 def install_system
 
-	# Make sure prezto is setup
-	install_prezto
-
 	# Grab wanted brews
 	`which brew`
 	unless $?.success?
@@ -99,14 +83,16 @@ def install_system
 	puts "Please wait.. it may appear to hang for a minute or two."
 	puts
 
+	`brew install fish wget git git-flow mercurial`
 	`brew install reattach-to-user-namespace tmux`
-	`brew install cmake ctags uncrustify git git-flow`
-	`brew install mercurial the_silver_searcher wget`
-	`brew install macvim --override-system-vim --custom-icons --with-lua --with-luajit`
+	`brew install the_silver_searcher cmake ctags uncrustify`
+	`brew install emacs --cocoa`
+	`brew install node hugo`
 	`brew linkapps`
 
-	# Now we can make sure vim plugins are installed
-	install_vim_plugins
+	install_linkables
+	install_folders
+	install_shell
 
 end
 
@@ -147,18 +133,17 @@ end
 def install_folders
 
 	folders = [
-		['zsh', '.zsh'],
-		['vim', '.vim'],
-		['zsh/prezto', '.zprezto'],
+		['fish/oh-my-fish', '.oh-my-fish'],
+		['emacs/spacemacs', '.emacs.d']
 	]
 
 	folders.each do |folder|
-		source = folder[0]
-		target = "#{ENV['HOME']}/#{folder[-1].chomp('.fork')}"
+		source = "$PWD/#{folder[0]}"
+		target = "#{ENV['HOME']}/#{folder[-1]}"
 		if File.exists?(target) or File.symlink?(target)
 			puts "Skipping #{target}"
 		else
-			`ln -s "$PWD/#{source}" "#{target}"`
+			`ln -s "#{source}" "#{target}"`
 		end
 	end
 
@@ -181,50 +166,17 @@ end
 
 def install_iterm_themes
 	`/usr/libexec/PlistBuddy -c "Add :'Custom Color Presets':'Solarized Light' dict" ~/Library/Preferences/com.googlecode.iterm2.plist }`
-	`/usr/libexec/PlistBuddy -c "Merge 'colors/Solarized Light.itermcolors' :'Custom Color Presets':'Solarized Light'" ~/Library/Preferences/com.googlecode.iterm2.plist }`
-	`/usr/libexec/PlistBuddy -c "Add :'Custom Color Presets':'Solarized Dark' dict" ~/Library/Preferences/com.googlecode.iterm2.plist }`
-	`/usr/libexec/PlistBuddy -c "Merge 'colors/Solarized Dark.itermcolors' :'Custom Color Presets':'Solarized Dark'" ~/Library/Preferences/com.googlecode.iterm2.plist }`
+	`/usr/libexec/PlistBuddy -c "Merge 'iterm2/Solarized Light.itermcolors' :'Custom Color Presets':'Solarized Light'" ~/Library/Preferences/com.googlecode.iterm2.plist }`
 end
 
-def install_prezto
+def install_shell
 
-	FileUtils.rm("#{ENV['HOME']}/.zlogin")
-	FileUtils.rm("#{ENV['HOME']}/.zlogout")
-	FileUtils.rm("#{ENV['HOME']}/.zprofile")
-	FileUtils.rm("#{ENV['HOME']}/.zshenv")
+	FileUtils.rm("#{ENV['HOME']}/.oh-my-fish")
+	FileUtils.rm("#{ENV['HOME']}/.config/fish")
 
-	# zpreztorc and zshrc are overidden and symlinked elsewhere
-	`ln -s "#{ENV['PWD']}/zsh/prezto/runcoms/zlogin" "#{ENV['HOME']}/.zlogin"`
-	`ln -s "#{ENV['PWD']}/zsh/prezto/runcoms/zlogout" "#{ENV['HOME']}/.zlogout"`
-	`ln -s "#{ENV['PWD']}/zsh/prezto/runcoms/zprofile" "#{ENV['HOME']}/.zprofile"`
-	`ln -s "#{ENV['PWD']}/zsh/prezto/runcoms/zshenv" "#{ENV['HOME']}/.zshenv"`
+	`ln -s "#{ENV['PWD']}/fish/config.fish" "#{ENV['HOME']}/.config/fish/config.fish"`
+	`grep -q '^/usr/local/bin/fish$' /etc/shells; or echo '/usr/local/bin/fish' | sudo tee -a /etc/shells`
+	`chsh -s /usr/local/bin/fish`
 
 end
 
-def install_vim_plugins
-
-	puts
-	puts "Please wait.. it may appear to hang for a minute or two."
-	puts
-
-	# Have NeoBundle install managed plugins
-	`vim +NeoBundleInstall +qall > /dev/null 2>&1`
-
-	# Update YouCompleteMe plugin
-	`cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer --omnisharp-completer`
-
-end
-
-def update_vim_plugins
-
-	puts
-	puts "Please wait.. it may appear to hang for a minute or two."
-	puts
-
-	# Have Vundle update managed plugins
-	`vim +NeoBundleUpdate +qall > /dev/null 2>&1`
-
-	# Update YouCompleteMe plugin
-	`cd $PWD/vim/bundle/YouCompleteMe && ./install.sh --clang-completer --omnisharp-completer`
-
-end
