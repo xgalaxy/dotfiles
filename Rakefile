@@ -13,8 +13,8 @@ task :install do
 
 end
 
-desc "Updates shell."
-task :updateshell do
+desc "Updates dotfiles."
+task :update do
 
 	git_modules
 
@@ -86,6 +86,7 @@ def install_system
 	`brew install fish wget git git-flow mercurial`
 	`brew install reattach-to-user-namespace tmux`
 	`brew install the_silver_searcher cmake ctags uncrustify`
+	`brew install macvim --override-system-vim --custom-icons`
 	`brew install emacs --cocoa`
 	`brew install node hugo`
 	`brew linkapps`
@@ -132,9 +133,14 @@ end
 
 def install_folders
 
+	FileUtils.rm("#{ENV['HOME']}/.oh-my-fish")
+	FileUtils.rm("#{ENV['HOME']}/.emacs.d")
+	FileUtils.rm("#{ENV['HOME']}/.vim")
+
 	folders = [
 		['fish/oh-my-fish', '.oh-my-fish'],
-		['emacs/spacemacs', '.emacs.d']
+		['emacs/spacemacs', '.emacs.d'],
+		['vim', '.vim']
 	]
 
 	folders.each do |folder|
@@ -171,10 +177,11 @@ end
 
 def install_shell
 
-	FileUtils.rm("#{ENV['HOME']}/.oh-my-fish")
-	FileUtils.rm("#{ENV['HOME']}/.config/fish")
+	shelldir = "#{ENV['HOME']}/.config/fish"
+	FileUtils.rm(shelldir)
+	FileUtils.mkdir_p(shelldir)
+	`ln -s "#{ENV['PWD']}/fish/config.fish" "#{shelldir}/config.fish"`
 
-	`ln -s "#{ENV['PWD']}/fish/config.fish" "#{ENV['HOME']}/.config/fish/config.fish"`
 	`grep -q '^/usr/local/bin/fish$' /etc/shells; or echo '/usr/local/bin/fish' | sudo tee -a /etc/shells`
 	`chsh -s /usr/local/bin/fish`
 
