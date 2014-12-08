@@ -20,6 +20,7 @@ set -g __fish_git_prompt_color_untrackedfiles $fish_color_normal
 set -g __fish_git_prompt_color_cleanstate green bold
 
 function fish_prompt
+	echo
 	set_color yellow
 	printf '%s' (whoami)
 	set_color normal
