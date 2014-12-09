@@ -83,7 +83,7 @@ def install_system
 	puts "Please wait.. it may appear to hang for a minute or two."
 	puts
 
-	`brew install fish wget git git-flow mercurial`
+	`brew install wget git git-flow mercurial`
 	`brew install reattach-to-user-namespace tmux`
 	`brew install the_silver_searcher cmake ctags uncrustify`
 	`brew install macvim --override-system-vim --custom-icons`
@@ -133,12 +133,7 @@ end
 
 def install_folders
 
-	FileUtils.rm("#{ENV['HOME']}/.oh-my-fish")
-	FileUtils.rm("#{ENV['HOME']}/.emacs.d")
-	FileUtils.rm("#{ENV['HOME']}/.vim")
-
 	folders = [
-		['fish/oh-my-fish', '.oh-my-fish'],
 		['emacs/spacemacs', '.emacs.d'],
 		['vim', '.vim']
 	]
