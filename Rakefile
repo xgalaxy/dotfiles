@@ -8,7 +8,6 @@ task :install do
 	git_modules
 
 	install_fonts
-	install_iterm_themes
 	install_system
 
 end
@@ -83,7 +82,7 @@ def install_system
 	puts "Please wait.. it may appear to hang for a minute or two."
 	puts
 
-	`brew install wget git git-flow mercurial`
+	`brew install wget git git-flow`
 	`brew install reattach-to-user-namespace tmux`
 	`brew install the_silver_searcher cmake ctags uncrustify`
 	`brew install macvim --override-system-vim --custom-icons`
@@ -163,11 +162,6 @@ def install_fonts
 		`cp -f "#{font}" "#{target}"`
 	end
 
-end
-
-def install_iterm_themes
-	`/usr/libexec/PlistBuddy -c "Add :'Custom Color Presets':'Solarized Light' dict" ~/Library/Preferences/com.googlecode.iterm2.plist }`
-	`/usr/libexec/PlistBuddy -c "Merge 'iterm2/Solarized Light.itermcolors' :'Custom Color Presets':'Solarized Light'" ~/Library/Preferences/com.googlecode.iterm2.plist }`
 end
 
 def install_shell
