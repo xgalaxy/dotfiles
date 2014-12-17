@@ -54,8 +54,10 @@ else
 fi
 
 export LANG=en_US.UTF-8
+export MAVEN_OPTS='-Dfile.encoding=UTF-8 -XX:MaxPermSize=2048M -Xmx2048M'
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export UNITY_HOME=/Applications/Unity/Unity.app
 export ANDROID_SDK_ROOT=$HOME/Develop/android-sdk
 export ANDROID_NDK_ROOT=$HOME/Develop/android-sdk/android-ndk-r10
-export UNITY_HOME=/Applications/Unity/Unity.app
 
 source $ZSH/oh-my-zsh.sh
