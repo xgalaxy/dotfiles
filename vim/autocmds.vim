@@ -5,34 +5,33 @@
 
 augroup vimrc
 
-	autocmd!
+    autocmd!
 
-	" Turn off error bells
-	autocmd GUIEnter * set visualbell t_vb=
+    " Turn off error bells
+    autocmd GUIEnter * set visualbell t_vb=
 
-	" Highlight cursor line after 120 characters
-	autocmd BufEnter * if &modifiable && &ft != 'unite' | match ErrorMsg '\%120v.*'
+    " Highlight cursor line after 125 characters
+    autocmd BufEnter * if &modifiable && &ft != 'ctrlp' | match ErrorMsg '\%125v.*'
 
-	" Automatically strip trailing whitespaces
-	autocmd BufRead,BufWritePre,FileWritePre * silent! %s/[\r \t]\+$//
+    " Automatically switch to current file directory on buffer open
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
-	" Fix Python
-	autocmd FileType python
-		\ set tabstop = 4 |
-		\ set softtabstop = 4 |
-		\ set shiftwidth = 4 |
-		\ set noexpandtab
+    " Force cursor to the first line when editing a git commit message
+    autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
-	" Ultisnips
-	autocmd BufEnter *.snippets setf snippets
-	autocmd FileType snippets set noexpandtab
+    " Automatically strip trailing whitespaces
+    autocmd BufRead,BufWritePre,FileWritePre * silent! %s/[\r \t]\+$//
 
-	" Unite
-	autocmd FileType unite call s:unite_settings()
-	function! s:unite_settings()
-		nmap <buffer> <esc> <Plug>(unite_all_exit)
-		nmap <buffer> <c-a> <Plug>(unite_choose_action)
-		imap <buffer> <c-a> <Plug>(unite_choose_action)
-	endfunction
+    " Ultisnips
+    autocmd BufEnter *.snippets setf snippets
+    autocmd FileType snippets set noexpandtab
+
+    " YouCompleteMe / auto completion
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 augroup END

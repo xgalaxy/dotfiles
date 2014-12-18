@@ -1,10 +1,9 @@
 # dotfiles
 
-Probably only works on OSX.
+Only works on OSX.
 This is my configuration files for development, primarily in C/C++, C#, Java, and Javascript.
 
 ### todo
-- powerline ?
 - tmux setup
 -- key mappings
 -- temuxinator ?

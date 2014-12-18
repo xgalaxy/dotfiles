@@ -4,4 +4,4 @@ vim/bundle/*
 vim/_undo/*
 vim/_swap/*
 vim/_backup/*
-emacs/elpa/*
+emacs/packages/*

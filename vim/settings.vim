@@ -7,25 +7,21 @@
 let mapleader=','
 
 " Work better with wrapped lines
-nmap j gj
-nmap k gk
+noremap j gj
+noremap k gk
 
 " Move between windows easily
-map <leader>wj <c-w>j
-map <leader>wk <c-w>k
-map <leader>wh <c-w>h
-map <leader>wl <c-w>l
+map <c-j> <c-w>j<c-w>_
+map <c-k> <c-w>k<c-w>_
+map <c-l> <c-w>l<c-w>_
+map <c-h> <c-w>h<c-w>_
 
 " Collapse or expand windows
 map <leader>w- <c-w>_
 map <leader>w= <c-w>=
 
-" Move between tabs easily
-" gt = next
-" gT = prev
-
 " Toggle search highlighting
-nmap <cr> :set invhlsearch<cr>
+nmap <silent> <cr> :set invhlsearch<cr>
 
 " Visual Shifting
 vnoremap < <gv
@@ -41,9 +37,12 @@ cmap w!! w !sudo tee % >/dev/null
 " Artistic Style
 " nnoremap <F7> :%!astyle<cr>
 
+" TODO: run ctags
+" map <leader>ct :!ctags -R .<cr>
+
 " Airline
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -53,6 +52,67 @@ let g:airline_symbols.readonly = "\u1587"
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme = 'solarized'
 
+" Commentary
+nmap gcc <Plug>CommentaryLine
+
+" CtrlP
+let g:ctrlp_working_path_mode = 'ra'
+let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+let g:ctrlp_user_command = {
+    \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+    \ 'fallback': s:ctrlp_fallback
+    \ }
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\.git$\|\.hg$\|\.svn$',
+    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
+nnoremap <silent> <d-t> :CtrlP<cr>
+nnoremap <silent> <d-r> :CtrlPTag<cr>
+
+"Easy Align
+let g:easy_align_delimiters = {
+    \ '>': { 'pattern': '>>\|=>\|>' },
+    \ '/': {
+    \   'pattern': '//\+\|/\*\|\*/',
+    \   'delimiter_align': 'l',
+    \   'ignore_groups': ['!Comment']
+    \   },
+    \ ']': {
+    \   'pattern': '[[\]]',
+    \   'left_margin': 0,
+    \   'right_margin': 0,
+    \   'stick_to_left': 0
+    \   },
+    \ ')': {
+    \   'pattern': '[()]',
+    \   'left_margin': 0,
+    \   'right_margin': 0,
+    \   'stick_to_left': 0
+    \   },
+    \ 'd': {
+    \   'pattern': ' \(\S\+\s*[;=]\)\@=',
+    \   'left_margin': 0,
+    \   'right_margin': 0
+    \   }
+    \ }
+xmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+"Fugitive
+nnoremap <silent> <leader>gs :Gstatus<cr>
+nnoremap <silent> <leader>gd :Gdiff<cr>
+nnoremap <silent> <leader>gc :Gcommit<cr>
+nnoremap <silent> <leader>gl :Glog<cr>
+nnoremap <silent> <leader>gp :Git push<cr>
+nnoremap <silent> <leader>ga :Git add -p<cr>
+
+" Matchit
+let b:match_ignorecase = 1
+
 " Multiple cursors
 let g:multi_cursor_use_default_mapping = 0
 let g:multi_cursor_next_key = '<c-n>'
@@ -60,52 +120,24 @@ let g:multi_cursor_prev_key = '<c-p>'
 let g:multi_cursor_skip_key = '<c-x>'
 let g:multi_cursor_quit_key = '<esc>'
 
-" Sneak
-let g:sneak#streak = 1
-let g:sneak#use_ic_scs = 1
-nmap f <plug>Sneak_f
-nmap F <plug>Sneak_F
-xmap f <plug>Sneak_f
-xmap F <plug>Sneak_F
-omap f <plug>Sneak_f
-omap F <plug>Sneak_F
-nmap t <plug>Sneak_t
-nmap T <plug>Sneak_T
-xmap t <plug>Sneak_t
-xmap T <plug>Sneak_T
-omap t <plug>Sneak_t
-omap T <plug>Sneak_T
-
-" Tabular
-nnoremap <leader>a= :Tabularize /=<cr>
-vnoremap <leader>a= :Tabularize /=<cr>
-nnoremap <leader>a/ :Tabularize /\/\//l2c1l0<cr>
-vnoremap <leader>a/ :Tabularize /\/\//l2c1l0<cr>
-nnoremap <leader>a, :Tabularize /,/l0r1<cr>
-vnoremap <leader>a, :Tabularize /,/l0r1<cr>
-
+"NERDTree
+let NERDTreeShowBookmarks = 1
+let NERDTreeIgnore = ['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeChDirMode = 0
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMouseMode = 2
+let NERDTreeShowHidden = 1
+let NERDTreeKeepTreeInNewTab = 1
+let g:NERDShutUp = 1
+let g:nerdtree_tabs_open_on_gui_startup = 0
+map <c-e> <plug>NERDTreeTabsToggle<cr>
+map <leader>e :NERDTreeFind<cr>
+nmap <leader>nt :NERDTreeFind<cr>
 
 " Tagbar
 let g:tagbar_sort = 0
 let g:tagbar_autofocus = 1
-nnoremap <leader>tb :TagbarToggle<cr>
-
-" Undotree
-let g:undotree_SetFocusWhenToggle = 1
-nnoremap <leader>ut :UndotreeToggle<cr>
-
-" Unite
-let g:unite_source_file_rec_max_cache_files = 0
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup --column'
-let g:unite_source_grep_recursive_opt = ''
-nnoremap <leader>uf :Unite -buffer-name=files  -no-split -start-insert file_rec/async<cr>
-nnoremap <leader>ub :Unite -buffer-name=buffer -no-split -quick-match buffer<cr>
-nnoremap <leader>uy :Unite -buffer-name=yank   -no-split -quick-match history/yank<cr>
-call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 0)
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" call unite#filters#sorter_default#use(['sorter_rank'])
+nnoremap <silent> <leader>tt :TagbarToggle<cr>
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger = '<c-j>'
@@ -113,14 +145,16 @@ let g:UltiSnipsJumpForwardTrigger = '<c-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 let g:UltiSnipsListSnippets = '<c-l>'
 
+" Undotree
+let g:undotree_SetFocusWhenToggle = 1
+nnoremap <leader>u :UndotreeToggle<cr>
+
 " Vitality
 let g:vitality_always_assume_iterm = 1
 
 " YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_filetype_specific_completion_to_disable = { 'javascript': 1 }
-" let g:ycm_collect_identifiers_from_tags_files = 1
+let g:acp_enableAtStartup = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
 nnoremap <leader>yc :YcmForceCompileAndDiagnostics<cr>
 nnoremap <leader>yg :YcmCompleter GoToDefinitionElseDeclaration<cr>
 nnoremap <leader>yd :YcmCompleter GoToDefinition<cr>

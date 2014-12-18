@@ -10,14 +10,18 @@ set nocompatible
 source ~/.vim/bundles.vim
 
 " System
-set title                            " Show the title in the terminal
-set ttyfast                          " We have a fast terminal
-set t_Co=256                         " Enable 256 colors
-set clipboard=unnamed                " Work with the system clipboard
-set ttymouse=xterm2                  " Enable terminal mouse
 set mouse=a                          " Enable mouse in all modes
+set clipboard=unnamed                " Work with the system clipboard
+set encoding=utf-8                   " Default UTF-8 encoding
+
+" Terminal settings
+set ttyfast                          " We have a fast terminal
+set ttymouse=xterm2                  " Enable terminal mouse
+set t_Co=256                         " Enable 256 colors
+set noshowmode                       " Don't show the mode twice in terminal
 
 " Interface
+set title                            " Show the title
 colorscheme solarized                " Color theme
 set background=light                 " Background color
 set guifont=Source\ Code\ Pro:h14    " In case we are running gui
@@ -26,17 +30,17 @@ set number                           " Show line numbers
 set relativenumber                   " Show relative line numbers
 set cursorline                       " Show current line
 set scrolloff=5                      " Minimum lines to keep below current line
-set noshowmode                       " Don't show the current editor mode
 set nolist                           " Don't show whitespace
 set nowrap                           " Don't wrap long lines
 set linebreak                        " Wrap at word (if word wrapping)
+set splitbelow                       " Split horizontally below
+set splitright                       " Split vertically right
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 
-" Tabs are four columns wide
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set noexpandtab
+" Editing
+set tabstop=4                        " Hard Tab width
+set shiftwidth=4                     " Soft Tab width
+set expandtab                        " Tabs are spaces
 
 " Searching
 set showmatch                        " Show matching brackets / parenthesis
@@ -57,13 +61,12 @@ set wildignore+=*.o,*.out,*.obj,*.exe,*.so,*.dll,.git,*.rbc,*.rbo,*.class,*.svn,
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-set wildignore+=*.swp,*~,._*
+set wildignore+=*/tmp/*,*\\tmp\\*,*.swp,*~,._*
 
 " Misc
-set encoding=utf-8                   " Default UTF-8 encoding
-set splitbelow                       " Split horizontally below
-set splitright                       " Split vertically right
 set tags=./tags;/
+set conceallevel=2
+set concealcursor=i
 
 " Other vimrc files
 source ~/.vim/autocmds.vim

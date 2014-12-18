@@ -47,6 +47,7 @@ ZSH_CUSTOM=$HOME/Dropbox/dotfiles/zsh/custom
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(brew git git-flow history-substring-search)
 
+export PATH=/usr/local/bin:$PATH
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
