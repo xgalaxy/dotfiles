@@ -83,10 +83,8 @@ def install_system
 	puts
 
 	`brew install wget git git-flow`
-	`brew install reattach-to-user-namespace tmux`
 	`brew install the_silver_searcher cmake ctags uncrustify`
 	`brew install macvim --override-system-vim --custom-icons`
-	`brew install emacs --cocoa`
 	`brew install node hugo`
 	`brew linkapps`
 
