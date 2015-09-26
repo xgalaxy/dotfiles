@@ -4,10 +4,7 @@ require 'rake'
 desc "Installs dotfiles."
 task :install do
 
-	git_setup
-	git_modules
-
-	install_fonts
+    install_git_config
 	install_system
 
 end
@@ -15,12 +12,7 @@ end
 desc "Updates dotfiles."
 task :update do
 
-	git_modules
-
-	install_fonts
-	install_linkables
-	install_folders
-	install_shell
+    update_from_git
 
 end
 
@@ -46,7 +38,17 @@ task :default => 'install'
 
 private
 
-def git_setup
+def update_from_git
+
+    # Update from personal github
+    Dir.chdir('~/Public/iCloud/dotfiles') do
+        `git pull --rebase`
+        `git submodule sync; git submodule update`
+    end
+
+end
+
+def install_git_config
 
 	puts
 	puts "What is your git author name?"
@@ -59,13 +61,6 @@ def git_setup
 	`sed -e "s/AUTHOR_NAME/#{author_name}/g" -e "s/AUTHOR_EMAIL/#{author_email}/g" git/gitconfig.template > git/gitconfig.symlink`
 
 	puts
-
-end
-
-def git_modules
-
-	`git pull --recurse-submodules`
-	`git submodule update --init --recursive`
 
 end
 
@@ -82,16 +77,28 @@ def install_system
 	puts "Please wait.. it may appear to hang for a minute or two."
 	puts
 
+    puts "Installing applications from homebrew"
+
+    `brew tap railwaycat/emacsmacport`
 	`brew install wget git git-flow`
 	`brew install the_silver_searcher cmake ctags uncrustify`
 	`brew install macvim --override-system-vim --custom-icons`
+    `brew install emacs-mac --with-spacemacs-icon`
 	`brew install node hugo`
 	`brew linkapps`
 
+    # Install symlinks
+    puts "Installing symlinks..."
 	install_linkables
 	install_folders
+
+    # Install zsh
+    puts "Installing zshell..."
 	install_shell
 
+    # Install fonts
+    puts "Installing fonts..."
+	install_fonts
 end
 
 def install_linkables
