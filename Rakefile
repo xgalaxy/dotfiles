@@ -96,7 +96,7 @@ def install_system
     puts "Installing applications from homebrew"
 
     `brew tap railwaycat/emacsmacport`
-	`brew install wget git git-flow`
+	`brew install zsh wget git git-flow`
 	`brew install the_silver_searcher cmake ctags uncrustify`
 	`brew install macvim --override-system-vim --custom-icons`
     `brew install emacs-mac --with-spacemacs-icon`
@@ -187,13 +187,8 @@ end
 
 def install_shell
 
-	shelldir = "#{ENV['HOME']}/.config/fish"
-	FileUtils.rm(shelldir)
-	FileUtils.mkdir_p(shelldir)
-	`ln -s "#{ENV['PWD']}/fish/config.fish" "#{shelldir}/config.fish"`
-
-	`grep -q '^/usr/local/bin/fish$' /etc/shells; or echo '/usr/local/bin/fish' | sudo tee -a /etc/shells`
-	`chsh -s /usr/local/bin/fish`
+	`grep -q '^/usr/local/bin/zsh$' /etc/shells; or echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells`
+	`chsh -s /usr/local/bin/zsh`
 
 end
 
