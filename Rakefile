@@ -16,6 +16,13 @@ task :update do
 
 end
 
+desc "Upgrade submodules."
+task :upgrade do
+
+    upgrade_submodules
+
+end
+
 desc "Removes our existing dotfiles."
 task :uninstall do
 
@@ -44,6 +51,15 @@ def update_from_git
     Dir.chdir('~/Public/iCloud/dotfiles') do
         `git pull --rebase`
         `git submodule sync; git submodule update`
+    end
+
+end
+
+def upgrade_submodules
+
+    # Upgrade submodules used by dotfiles
+    Dir.chdir('~/Public/iCloud/dotfiles') do
+        `git submodule foreach git pull origin master`
     end
 
 end

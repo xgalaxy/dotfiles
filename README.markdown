@@ -3,14 +3,9 @@
 Only works on OSX.
 This is my configuration files for development, primarily in C/C++, C#, Java, and Javascript.
 
-### todo
-- tmux setup
--- key mappings
--- temuxinator ?
-
 ## installing
 ```
-git clone https://github.com/xgalaxy/dotfiles.git ~/.dotfiles
+git clone --recursive https://github.com/xgalaxy/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 rake install
 ```
@@ -19,6 +14,12 @@ rake install
 ```
 cd ~/.dotfiles
 rake update
+```
+
+## upgrading modules
+```
+cd ~/.dotfiles
+rake upgrade
 ```
 
 ## uninstalling
