@@ -1,38 +1,3 @@
-# Compiled source #
-###################
-*.apk
-*.ap_
-*.class
-*.dex
-*.out
-*.lai
-*.slo
-*.lo
-*.o
-*.pyc
-
-# IDE generated files #
-#######################
-*.vcxproj.user
-*xcuserdata*
-*.pbxuser
-*.mode1v3
-*.swp
-*.suo
-
-# Logs and databases #
-######################
-*.0
-*.log
-*.lock
-*.sql
-*.sqlite
-*.cache
-tags
-!tags/
-TAGS
-!TAGS/
-
 # OS generated files #
 ######################
 *.pid
@@ -42,8 +7,5 @@ TAGS
 .LSOverride
 .Spotlight-V100
 .Trashes
-._*
-Icon
-Icon?
 ehthumbs.db
 Thumbs.db
