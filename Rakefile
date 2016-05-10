@@ -95,11 +95,11 @@ def install_system
 
     puts "Installing applications from homebrew"
 
-    `brew tap railwaycat/emacsmacport`
+    `brew tap d12frosted/emacs-plus`
 	`brew install zsh wget git git-flow`
 	`brew install the_silver_searcher cmake ctags uncrustify`
 	`brew install macvim --override-system-vim --custom-icons`
-    `brew install emacs-mac --with-spacemacs-icon`
+    `brew install emacs-plus --with-cocoa --with-gnutls --with-librsvg --with-imagemagick --with-spacemacs-icon`
 	`brew install node hugo`
 	`brew linkapps`
 
