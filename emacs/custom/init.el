@@ -8,7 +8,7 @@
    '(auto-completion
      better-defaults
      emacs-lisp
-     ;; git
+     git
      ;; markdown
      ;; org
      ;; (shell :variables
@@ -16,7 +16,7 @@
      ;;        shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
-     ;; version-control
+     osx
      )
    dotspacemacs-additional-packages '()
    dotspacemacs-excluded-packages '()
