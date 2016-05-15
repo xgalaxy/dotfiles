@@ -113,6 +113,11 @@ def install_system
     # Install fonts
     puts "Installing fonts..."
     install_fonts
+
+    # Install spacemacs
+    puts "Installing spacemacs..."
+    install_spacemacs
+
 end
 
 def install_linkables
@@ -152,9 +157,7 @@ end
 def install_folders
 
     folders = [
-        ['emacs/spacemacs', '.emacs.d'],
-        ['emacs/custom', '.spacemacs.d'],
-        ['vim', '.vim']
+        ['spacemacs', '.spacemacs.d']
     ]
 
     folders.each do |folder|
@@ -166,6 +169,13 @@ def install_folders
             `ln -s "#{source}" "#{target}"`
         end
     end
+
+end
+
+def install_shell
+
+    `grep -q '^/usr/local/bin/zsh$' /etc/shells; or echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells`
+    `chsh -s /usr/local/bin/zsh`
 
 end
 
@@ -184,9 +194,8 @@ def install_fonts
 
 end
 
-def install_shell
+def install_spacemacs
 
-    `grep -q '^/usr/local/bin/zsh$' /etc/shells; or echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells`
-    `chsh -s /usr/local/bin/zsh`
+    `git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d`
 
 end
