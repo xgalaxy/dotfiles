@@ -48,7 +48,7 @@ private
 def update_from_git
 
     # Update from personal github
-    Dir.chdir('~/Public/iCloud/dotfiles') do
+    Dir.chdir('~/Google\ Drive/Dots') do
         `git pull --rebase`
         `git submodule sync; git submodule update`
     end
@@ -58,7 +58,7 @@ end
 def upgrade_submodules
 
     # Upgrade submodules used by dotfiles
-    Dir.chdir('~/Public/iCloud/dotfiles') do
+    Dir.chdir('~/Google\ Drive/Dots') do
         `git submodule foreach git pull origin master`
     end
 
@@ -96,9 +96,7 @@ def install_system
     puts "Installing applications from homebrew"
 
     `brew tap d12frosted/emacs-plus`
-    `brew install zsh wget git git-flow`
-    `brew install the_silver_searcher cmake ctags uncrustify`
-    `brew install macvim --override-system-vim --custom-icons`
+    `brew install zsh wget git git-flow cmake the_silver_searcher`
     `brew install emacs-plus --with-cocoa --with-gnutls --with-librsvg --with-imagemagick --with-spacemacs-icon`
     `brew install node hugo`
     `brew linkapps`
@@ -192,4 +190,3 @@ def install_shell
     `chsh -s /usr/local/bin/zsh`
 
 end
-
