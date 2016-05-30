@@ -1,23 +1,41 @@
 [user]
         name = AUTHOR_NAME
         email = AUTHOR_EMAIL
+[credential]
+        helper = osxkeychain
+[alias]
+        co = checkout
+	promote = !$ZSH/bin/git-promote
+        wtf = !$ZSH/bin/git-wtf
+	count = !git shortlog -sn
 [color]
         diff = auto
         status = auto
         branch = auto
         interactive = auto
+        ui = true
 [core]
         excludesfile = ~/.gitignore
-        editor = vim
+        editor = nvim
 [push]
-        default = tracking
+        default = current
 [branch]
         autosetuprebase = always
 [merge]
         ff = false
+        tool = bcomp
+[mergetool]
         keepBackup = false
-        tool = vimdiff
+        prompt = false
+[mergetool "bcomp"]
+        cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+        trustExitCode = true
 [diff]
-        tool = vimdiff
+        tool = bcomp
 [difftool]
         prompt = false
+[difftool "bcomp"]
+        cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+        trustExitCode = true
+[help]
+        autocorrect = 1

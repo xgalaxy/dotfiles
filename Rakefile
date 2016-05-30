@@ -4,40 +4,28 @@ require 'rake'
 desc "Installs dotfiles."
 task :install do
 
-    install_git_config
-    install_system
+    install_homebrew
+    install_zsh
+
+    setup_osx
+    setup_zsh
+    setup_git
+    setup_nvim
 
 end
 
 desc "Updates dotfiles."
 task :update do
 
-    update_from_git
+    install_homebrew
 
-end
+    setup_osx
+    setup_zsh
+    setup_git
+    setup_nvim
 
-desc "Upgrade submodules."
-task :upgrade do
-
-    upgrade_submodules
-
-end
-
-desc "Removes our existing dotfiles."
-task :uninstall do
-
-    Dir.glob('**/*.symlink').each do |linkable|
-        file = linkable.split('/').last.split('.symlink').last
-        target = "#{ENV['HOME']}/.#{file}"
-
-        # Remove all symlinks created during installation
-        FileUtils.rm(target) if File.symlink?(target)
-
-        # Replace any backups made during installation
-        if File.exists?("#{ENV['HOME']}/.#{file}.backup")
-            `mv "$HOME/.#{file}.backup" "$HOME/.#{file}"`
-        end
-    end
+    # Updates from AppStore
+    `sudo softwareupdate -i -a`
 
 end
 
@@ -45,26 +33,71 @@ task :default => 'install'
 
 private
 
-def update_from_git
+def install_homebrew
 
-    # Update from personal github
-    Dir.chdir('~/Google\ Drive/Dots') do
-        `git pull --rebase`
-        `git submodule sync; git submodule update`
+    `which brew`
+    unless $?.success?
+        puts "Installing Homebrew."
+        `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
     end
+
+    puts "Installing dependencies from Homebrew."
+    `bubu && brew bundle && brew linkapps`
 
 end
 
-def upgrade_submodules
+def install_zsh
 
-    # Upgrade submodules used by dotfiles
-    Dir.chdir('~/Google\ Drive/Dots') do
-        `git submodule foreach git pull origin master`
-    end
+    `grep -q '^/usr/local/bin/zsh$' /etc/shells; or echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells`
+    `chsh -s /usr/local/bin/zsh`
 
 end
 
-def install_git_config
+def setup_osx
+    # Disable press-and-hold for keys in favor of key repeat.
+    `defaults write -g ApplePressAndHoldEnabled -bool false`
+
+    # Use AirDrop over every interface.
+    `defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1`
+
+    # Always open everything in Finder's list view.
+    `defaults write com.apple.Finder FXPreferredViewStyle Nlsv`
+
+    # Show the ~/Library folder.
+    `chflags nohidden ~/Library`
+
+    # Set a really fast key repeast.
+    #`defaults write NSGlobalDomain KeyRepeat -int 0`
+
+    # Set the Finder prefs for showing a few different volumes on the Desktop.
+    #`defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true`
+    #`defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true`
+
+    # Run the screensaver if we're in the bottom-left hot corner.
+    `defaults write com.apple.dock wvous-bl-corner -int 5`
+    `defaults write com.apple.dock wvous-bl-modifier -int 0`
+
+    # Hide Safari's bookmark bar.
+    `defaults write com.apple.Safari ShowFavoritesBar -bool false`
+
+    # Setup Safari for development.
+    `defaults write com.apple.Safari IncludeInternalDebugMenu -bool true`
+    `defaults write com.apple.Safari IncludeDevelopMenu -bool true`
+    `defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true`
+    `defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true`
+    `defaults write NSGlobalDomain WebKitDeveloperExtras -bool true`
+
+end
+
+def setup_zsh
+
+    source = "#{ENV['HOME']}/.dots/zsh/zshrc.symlink"
+    target = "#{ENV['HOME']}/.zshrc"
+    install_link(source, target)
+
+end
+
+def setup_git
 
     puts
     puts "What is your git author name?"
@@ -78,124 +111,32 @@ def install_git_config
 
     puts
 
+    source = "#{ENV['HOME']}/.dots/git/gitconfig.symlink"
+    target = "#{ENV['HOME']}/.gitconfig"
+    install_link(source, target)
+
+    source = "#{ENV['HOME']}/.dots/git/gitignore.symlink"
+    target = "#{ENV['HOME']}/.gitignore"
+    install_link(source, target)
+
 end
 
-def install_system
+def setup_nvim
 
-    # Grab wanted brews
-    `which brew`
-    unless $?.success?
-        puts "Must have homebrew installed and your paths setup correctly first!"
-        return
+    source = "#{ENV['HOME']}/.dots/nvim"
+    target = "#{ENV['HOME']}/.config/nvim"
+    install_link(source, target)
+
+end
+
+def install_link(source, target)
+
+    if File.exists?(target) or File.symlink?(target)
+        FileUtils.rm_rf(target)
     end
 
-    puts
-    puts "Please wait.. it may appear to hang for a minute or two."
-    puts
-
-    puts "Installing applications from homebrew"
-
-    `brew tap d12frosted/emacs-plus`
-    `brew install zsh wget git git-flow cmake the_silver_searcher`
-    `brew install emacs-plus --with-cocoa --with-gnutls --with-librsvg --with-imagemagick --with-spacemacs-icon`
-    `brew install node hugo`
-    `brew linkapps`
-
-    # Install symlinks
-    puts "Installing symlinks..."
-    install_linkables
-    install_folders
-
-    # Install zsh
-    puts "Installing zshell..."
-    install_shell
-
-    # Install fonts
-    puts "Installing fonts..."
-    install_fonts
-
-    # Install spacemacs
-    puts "Installing spacemacs..."
-    install_spacemacs
+    puts "Installing symlink: #{source} -> #{target}"
+    `ln -s "#{source}" "#{target}"`
 
 end
 
-def install_linkables
-
-    skip_all = false;
-    overwrite_all = false;
-    backup_all = false;
-
-    links = Dir[File.join("#{ENV['PWD']}", '**', '*.{symlink}')].each do |linkable|
-        overwrite = false
-        backup = false
-
-        file = linkable.split('/').last.split('.symlink').last
-        target = "#{ENV['HOME']}/.#{file}"
-        if File.exists?(target) or File.symlink?(target)
-            unless skip_all or overwrite_all or backup_all
-                puts "File already exists: #{target}, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
-                case STDIN.gets.chomp
-                when 'o' then overwrite = true
-                when 'b' then backup = true
-                when 'O' then overwrite_all = true
-                when 'B' then backup_all = true
-                when 'S' then skip_all = true
-                when 's' then next
-                end
-            end
-
-            FileUtils.rm_rf(target) if overwrite or overwrite_all
-            `mv "$HOME/.#{file}" "$HOME/.#{file}.backup"` if backup || backup_all
-        end
-
-        `ln -s "#{linkable}" "#{target}"` if not skip_all
-    end
-
-end
-
-def install_folders
-
-    folders = [
-        ['spacemacs', '.spacemacs.d']
-    ]
-
-    folders.each do |folder|
-        source = "$PWD/#{folder[0]}"
-        target = "#{ENV['HOME']}/#{folder[-1]}"
-        if File.exists?(target) or File.symlink?(target)
-            puts "Skipping #{target}"
-        else
-            `ln -s "#{source}" "#{target}"`
-        end
-    end
-
-end
-
-def install_shell
-
-    `grep -q '^/usr/local/bin/zsh$' /etc/shells; or echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells`
-    `chsh -s /usr/local/bin/zsh`
-
-end
-
-def install_fonts
-
-    fontdir = "#{ENV['HOME']}/Library/Fonts"
-    FileUtils.mkdir_p(fontdir)
-
-    fonts = Dir.glob('fonts/*')
-    fonts.each do |font|
-        file = font.split('/').last
-        target = "#{fontdir}/#{file}"
-
-        `cp -f "#{font}" "#{target}"`
-    end
-
-end
-
-def install_spacemacs
-
-    `git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d`
-
-end

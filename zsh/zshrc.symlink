@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/Google\ Drive/Dots/zsh/oh-my-zsh
+export ZSH=$HOME/.dots/zsh/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -39,18 +39,18 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$HOME/Google\ Drive/Dots/zsh/custom
+ZSH_CUSTOM=$HOME/.dots/zsh/custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew git git-flow history-substring-search)
+plugins=(brew brew-cask git git-flow history-substring-search)
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 export LANG=en_US.UTF-8
@@ -59,5 +59,6 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export UNITY_HOME=/Applications/Unity/Unity.app
 export ANDROID_SDK_ROOT=$HOME/Develop/android-sdk
 export ANDROID_NDK_ROOT=$HOME/Develop/android-sdk/android-ndk-r10
+export PATH=$HOME/.dots/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
