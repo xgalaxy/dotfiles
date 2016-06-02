@@ -4,7 +4,9 @@
 call g:plug#begin('~/.config/nvim/plugins')
 Plug 'benekastah/neomake', { 'on': 'Neomake' }
 Plug 'morhetz/gruvbox'
+Plug 'rdnetto/ycm-generator', { 'branch': 'stable' }
 Plug 'tpope/vim-surround'
+Plug 'valloric/youcompleteme', { 'do': 'python install.py --clang-completer' }
 Plug 'vim-airline/vim-airline'
 call g:plug#end()
 " }}}
@@ -105,5 +107,4 @@ endif
 let g:airline_symbols.linenr = "\u33d1"
 let g:airline_symbols.branch = "\u1472"
 let g:airline_symbols.readonly = "\u1587"
-
 " }}}

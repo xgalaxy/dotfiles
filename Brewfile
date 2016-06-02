@@ -5,8 +5,10 @@ tap 'neovim/neovim'
 
 brew 'zsh'
 brew 'git'
-brew 'neovim', args: ['HEAD', 'with-release']
+brew 'openssl'
 brew 'the_silver_searcher'
+brew 'neovim', args: ['HEAD', 'with-release']
+brew 'cmake'
 brew 'hugo'
 
 cask 'font-fantasque-sans-mono'
