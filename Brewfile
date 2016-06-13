@@ -3,13 +3,15 @@ cask_args appdir: '/Applications'
 tap 'caskroom/fonts'
 tap 'neovim/neovim'
 
-brew 'zsh'
-brew 'git'
-brew 'openssl'
-brew 'the_silver_searcher'
-brew 'neovim', args: ['HEAD', 'with-release']
 brew 'cmake'
+brew 'git'
 brew 'hugo'
+brew 'neovim', args: ['HEAD', 'with-release']
+brew 'openssl'
+brew 'python'
+brew 'the_silver_searcher'
+brew 'wget'
+brew 'zsh'
 
 cask 'font-fantasque-sans-mono'
 cask 'font-fira-mono'
