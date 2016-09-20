@@ -5,9 +5,9 @@
         helper = osxkeychain
 [alias]
         co = checkout
-	promote = !$ZSH/bin/git-promote
+        promote = !$ZSH/bin/git-promote
         wtf = !$ZSH/bin/git-wtf
-	count = !git shortlog -sn
+        count = !git shortlog -sn
 [color]
         diff = auto
         status = auto
@@ -20,6 +20,7 @@
 [push]
         default = current
 [branch]
+        autosetupmerge = always
         autosetuprebase = always
 [merge]
         ff = false
