@@ -5,6 +5,7 @@ tap 'neovim/neovim'
 
 brew 'cmake'
 brew 'git'
+brew 'git-lfs'
 brew 'hugo'
 brew 'neovim', args: ['HEAD', 'with-release']
 brew 'openssl'
