@@ -59,6 +59,6 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export UNITY_HOME=/Applications/Unity/Unity.app
 export ANDROID_SDK_ROOT=$HOME/Develop/android-sdk
 export ANDROID_NDK_ROOT=$HOME/Develop/android-sdk/android-ndk-r10
-export PATH=$HOME/.dots/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.dots/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
